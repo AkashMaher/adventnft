@@ -70,9 +70,9 @@ var connectWC = async () => {
         var accounts = await web3.eth.getAccounts();
         var account = accounts[0];
 
-        if (account != null) {
-            document.getElementById("connect").innerText = "Connected";
-        }
+        // if (account != null) {
+        //     document.getElementById("connect").innerText = "Connected";
+        // }
     }
 };
 var mintPopup = async () => {
@@ -146,10 +146,10 @@ var mintPopup = async () => {
         if (accounts.length === 0) return alert('Metamask Not Connected')
         var account = accounts[0];
 
-        if (account != null) {
-            document.getElementById("connect").innerText = "Connected";
+        // if (account != null) {
+        //     document.getElementById("connect").innerText = "Connected";
 
-        }
+        // }
 
         var bal = await web3.eth.getBalance(account)
         var bals = await web3.utils.fromWei(bal, 'ether');
