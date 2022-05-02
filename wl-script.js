@@ -7,11 +7,16 @@ const ADDRESS = "0xa779ec5e25E759c7A048929D923360E0F8066889";
 
 const ChainID = '4'
 
-document.write(`<div class="popup">
+document.write(`<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="popup">
                 <div class = "popup-content" >
-                <img src="https://www.freeiconspng.com/thumbs/x-png/black-x-png-27.png" alt="close" class="close">
+                
                     <p class="popup-top-text"><b>Choose How Many to Mint</b></p>
-                    <p class="slider"><input type="range" min="1" max="3" value="1" id="slider"></p>
+                    <p class="slider"><input type="range" min="1" max="5" value="1" id="slider"></p>
                     <p class="slider-count">Count: <span id="slider-val"></span> </p>
                     <p class="mintt"><button id="mint" class="mint">Mint Now</button></p>
                     <p class="popup-last-text" href="https://twitter.com/thecultdao" target="_block">Powered by CMD</p>
@@ -19,13 +24,22 @@ document.write(`<div class="popup">
                     <p class="confirmation"><b>Confirm the transaction in your wallet</b></p>
                     <p class="confirm">Wait until transaction window appears. If you don't see the Confirm button, scroll down</p>
                 </div>
-    </div >`)
+    </div >
+  </div>
+
+</div>
+<div>`)
 $(document).ready(function () {
     document.querySelector('.close').addEventListener('click', function () {
-        document.querySelector('.popup').style.display = "none";
+        document.getElementById("myModal").style.display = "none";
     });
 });
 
+window.onclick = function (event) {
+    if (event.target == document.getElementById("myModal")) {
+        document.getElementById("myModal").style.display = "none";
+    }
+};
 
 
 
@@ -106,7 +120,7 @@ var mintPopup = async () => {
             // if()
 
             if (check !== "0" && salestarted !== false) {
-                document.querySelector('.popup').style.display = "flex";
+                document.getElementById("myModal").style.display = "block";
             }
             else if (salestarted === false) {
                 document.querySelector('#mint-button').style.cursor = "no-drop";
@@ -190,7 +204,7 @@ var mintPopup = async () => {
         console.log(salestarted)
 
         if (check !=="0" && salestarted !==false) {
-            document.querySelector('.popup').style.display = "flex";
+            document.getElementById("myModal").style.display = "block";
         }
         else if (salestarted === false){
             document.querySelector('#mint-button').style.cursor = "no-drop";
