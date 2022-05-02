@@ -44,7 +44,7 @@ $(document).ready(function () {
 });
 
 window.onclick = function (event) {
-    if (event.target == modal) {
+    if (event.target == document.getElementById("myModal")) {
         document.getElementById("myModal").style.display = "none";
     }
 };
