@@ -33,7 +33,7 @@ document.write(`<div id="myModal" class="modal">
                     </select>
                     </div>
                     <p class="mintt"><button id="mint" class="mint">Mint Now</button></p>
-                    <p class="popup-last-text" >Minted: <span id="supply">0000</span> / 6666 ADV</p>
+                    <p class="popup-last-text" >Minted: <span id="supply"></span> / 6666 ADV</p>
                     <img src="https://assets-global.website-files.com/5b283a9ce1d84c649b724269/5b321dd937b49c6b5cc6ace5_pending.gif" class="waiting">
                     <p class="confirmation"><b>Confirm the transaction in your wallet</b></p>
                     <p class="confirm">Wait until transaction window appears. If you don't see the Confirm button, scroll down</p>
@@ -113,7 +113,8 @@ window.onclick = function (event) {
             
             if (w3) {
                 let contract = new w3.eth.Contract(ABI, ADDRESS);
-                var checkPrice = await contract.methods.getPrice().call()
+                var checkPrice = await contract.methods.getPrice().call();
+                var supply = await contract.methods.totalSupply().call();
 
                 var price = (checkPrice).toLocaleString('fullwide', { useGrouping: false });
                 console.log(price)
@@ -130,6 +131,8 @@ window.onclick = function (event) {
 
                 var salestarted = await contract.methods.saleActive().call()
                 console.log(salestarted)
+
+                document.getElementById("supply").textContent = supply;
                 // if()
 
                 if (salestarted !== false) {
@@ -186,6 +189,7 @@ window.onclick = function (event) {
         var name = await contract.methods.name().call()
         var totalSupply = await contract.methods.totalSupply().call()
         var symbol = await contract.methods.symbol().call()
+        var supply = await contract.methods.totalSupply().call();
 
         var checkPrice = await contract.methods.getPrice().call()
 
@@ -207,6 +211,7 @@ window.onclick = function (event) {
         // })
             var salestarted = await contract.methods.saleActive().call()
             console.log(salestarted)
+            document.getElementById("supply").textContent = supply;
 
             if (salestarted !== false) {
                 document.getElementById("myModal").style.display = "block";

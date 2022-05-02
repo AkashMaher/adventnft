@@ -16,10 +16,16 @@ document.write(`<div id="myModal" class="modal">
                 <div class = "popup-content" >
                 
                     <p class="popup-top-text"><b>Choose How Many to Mint</b></p>
-                    <p class="slider"><input type="range" min="1" max="5" value="1" id="slider"></p>
-                    <p class="slider-count">Count: <span id="slider-val"></span> </p>
+                    <div class="dropdown-list">
+                    <select name="mint-val" id="mint-val" class="mint-val">
+                        <option >Select Mint</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    </div>
                     <p class="mintt"><button id="mint" class="mint">Mint Now</button></p>
-                    <p class="popup-last-text" >Minted: <span id="supply">0000</span> / 6666 ADV</p>
+                    <p class="popup-last-text" >Minted: <span id="supply"></span> / 6666 ADV</p>
                     <img src="https://assets-global.website-files.com/5b283a9ce1d84c649b724269/5b321dd937b49c6b5cc6ace5_pending.gif" class="waiting">
                     <p class="confirmation"><b>Confirm the transaction in your wallet</b></p>
                     <p class="confirm">Wait until transaction window appears. If you don't see the Confirm button, scroll down</p>
@@ -103,20 +109,14 @@ var mintPopup = async () => {
             var price = (checkPrice).toLocaleString('fullwide', { useGrouping: false });
             console.log(price)
 
-            const slider = document.getElementById('slider');
-            var output = document.getElementById("slider-val");
-            output.innerHTML = slider.value;
 
-            slider.oninput = function () {
-                output.innerHTML = this.value;
-            }
-
-
+            var supply = await contract.methods.totalSupply().call();
             var check = await contract.methods.presaleList(account).call()
             console.log(check)
 
             var salestarted = await contract.methods.presaleIsActive().call()
             console.log(salestarted)
+            document.getElementById("supply").textContent = supply;
             // if()
 
             if (check !== "0" && salestarted !== false) {
@@ -135,7 +135,7 @@ var mintPopup = async () => {
             }
 
             document.getElementById('mint').onclick = () => {
-                let mintCount = document.getElementById("slider").value;
+                let mintCount = document.getElementById("mint-val").value;
                 let vall = price * mintCount
                 var val = (vall).toLocaleString('fullwide', { useGrouping: false });
                 contract.methods.mint(mintCount).send({ from: account, value: val });
@@ -178,19 +178,13 @@ var mintPopup = async () => {
         var name = await contract.methods.name().call()
         var totalSupply = await contract.methods.totalSupply().call()
         var symbol = await contract.methods.symbol().call()
+        var supply = await contract.methods.totalSupply().call();
 
         var checkPrice = await contract.methods.getWlPrice().call()
 
         var price = (checkPrice).toLocaleString('fullwide', { useGrouping: false });
         console.log(price)
 
-        const slider = document.getElementById('slider');
-        var output = document.getElementById("slider-val");
-        output.innerHTML = slider.value;
-
-        slider.oninput = function () {
-            output.innerHTML = this.value;
-        }
 
         // document.getElementById('mint-button').addEventListener('click', function () {
 
@@ -202,6 +196,8 @@ var mintPopup = async () => {
 
         var salestarted = await contract.methods.presaleIsActive().call()
         console.log(salestarted)
+
+        document.getElementById("supply").textContent = supply;
 
         if (check !=="0" && salestarted !==false) {
             document.getElementById("myModal").style.display = "block";
@@ -220,7 +216,7 @@ var mintPopup = async () => {
 
 
         document.getElementById('mint').onclick = () => {
-            let mintCount = document.getElementById("slider").value;
+            let mintCount = document.getElementById("mint-val").value;
             let vall = price * mintCount
             var val = (vall).toLocaleString('fullwide', { useGrouping: false });
             contract.methods.whitelistMint(mintCount).send({ from: account, value: val });
