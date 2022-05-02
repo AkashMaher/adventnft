@@ -101,7 +101,7 @@ body {
 
 
 #slider {
-    width: 250px;
+    width: 200px;
     cursor: pointer;
 }
 
@@ -161,5 +161,29 @@ body {
     padding: 10px 15px;
     border-radius: 25px;
     text-align: right;
+
+}
+
+.mint-val{
+    text-align: center;
+}
+
+select {
+    display: inline-block;
+    font-size: 17px;
+    text-align: center;
+    padding: 4px 3px 5px 5px;
+    width: 250px;
+    height: 40px;
+    outline: none;
+    color: rgb(0, 0, 0);
+    border: 1px solid #C8BFC4;
+    border-radius: 10px;
+    box-shadow: inset 1px 1px 2px #ddd8dc;
+    background-color: #fff;
+}
+
+.dropdown-list{
+    text-align: center;
 
 }

@@ -24,8 +24,14 @@ document.write(`<div id="myModal" class="modal">
                 <div class = "popup-content" >
                 
                     <p class="popup-top-text"><b>Choose How Many to Mint</b></p>
-                    <p class="slider"><input type="range" min="1" max="5" value="1" id="slider"></p>
-                    <p class="slider-count">Count: <span id="slider-val"></span> </p>
+                    <div class="dropdown-list">
+                    <select name="mint-val" id="mint-val" class="mint-val">
+                        <option >Select Mint</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    </div>
                     <p class="mintt"><button id="mint" class="mint">Mint Now</button></p>
                     <p class="popup-last-text" >Minted: <span id="supply">0000</span> / 6666 ADV</p>
                     <img src="https://assets-global.website-files.com/5b283a9ce1d84c649b724269/5b321dd937b49c6b5cc6ace5_pending.gif" class="waiting">
@@ -112,13 +118,13 @@ window.onclick = function (event) {
                 var price = (checkPrice).toLocaleString('fullwide', { useGrouping: false });
                 console.log(price)
 
-                const slider = document.getElementById('slider');
-                var output = document.getElementById("slider-val");
-                output.innerHTML = slider.value;
+                // const slider = document.getElementById('slider');
+                // var output = document.getElementById("slider-val");
+                // output.innerHTML = slider.value;
 
-                slider.oninput = function () {
-                    output.innerHTML = this.value;
-                }
+                // slider.oninput = function () {
+                //     output.innerHTML = this.value;
+                // }
                 // document.querySelector('.popup').style.display = "flex";
 
 
@@ -137,15 +143,15 @@ window.onclick = function (event) {
                 }
 
                 document.getElementById('mint').onclick = () => {
-                    let mintCount = document.getElementById("slider").value;
+                    let mintCount = document.getElementById("mint-val").value;
                     let vall = price * mintCount
                     var val = (vall).toLocaleString('fullwide', { useGrouping: false });
                     contract.methods.mint(mintCount).send({ from: account, value: val });
                     // contract.methods.whitelistMint(mintCount).send({ from: account, value: val });
 
                     document.querySelector('.popup-top-text').style.display = "none";
-                    document.querySelector('.slider').style.display = "none";
-                    document.querySelector('.slider-count').style.display = "none";
+                    // document.querySelector('.slider').style.display = "none";
+                    document.querySelector('.mint-val').style.display = "none";
                     document.querySelector('.mintt').style.display = "none";
                     document.querySelector('.popup-last-text').style.display = "none";
                     document.querySelector('.confirmation').style.display = "flex";
@@ -186,13 +192,13 @@ window.onclick = function (event) {
         var price = (checkPrice).toLocaleString('fullwide', { useGrouping: false });
         console.log(price)
 
-        const slider = document.getElementById('slider');
-        var output = document.getElementById("slider-val");
-        output.innerHTML = slider.value;
+        // const slider = document.getElementById('slider');
+        // var output = document.getElementById("slider-val");
+        // output.innerHTML = slider.value;
 
-        slider.oninput = function () {
-            output.innerHTML = this.value;
-        }
+        // slider.oninput = function () {
+        //     output.innerHTML = this.value;
+        // }
 
         // document.getElementById('mint-button').addEventListener('click', function () {
 
@@ -212,15 +218,15 @@ window.onclick = function (event) {
             }
 
         document.getElementById('mint').onclick = () => {
-            let mintCount = document.getElementById("slider").value;
+            let mintCount = document.getElementById("mint-val").value;
             let vall = price * mintCount
             var val = (vall).toLocaleString('fullwide', { useGrouping: false });
             contract.methods.mint(mintCount).send({ from: account, value: val });
             // contract.methods.whitelistMint(mintCount).send({ from: account, value: val });
 
             document.querySelector('.popup-top-text').style.display = "none";
-            document.querySelector('.slider').style.display = "none";
-            document.querySelector('.slider-count').style.display = "none";
+            // document.querySelector('.slider').style.display = "none";
+            document.querySelector('.mint-val').style.display = "none";
             document.querySelector('.mintt').style.display = "none";
             document.querySelector('.popup-last-text').style.display = "none";
             document.querySelector('.confirmation').style.display = "flex";
