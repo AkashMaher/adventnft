@@ -95,7 +95,7 @@ body {
 .mintt {
     text-align: center;
 
-    /* padding-left: 37px; */
+    padding-bottom: 25px;
 }
 
 
@@ -106,19 +106,21 @@ body {
 
 .slider {
     text-align: center;
-    padding-top: 25px;
-    padding-bottom: 5px;
+    padding-top: 35px;
+    padding-bottom: 25px;
+    
 }
 
 .slider-count {
     font-size: 20px;
     text-align: center;
-    /* padding-left: 37px; */
+    padding-bottom: 20px;
 }
 
 .popup-top-text {
     font-size: 22px;
     text-align: center;
+    padding-top:11px;
 }
 
 .popup-last-text {
