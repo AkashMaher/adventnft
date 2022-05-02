@@ -27,7 +27,7 @@ document.write(`<div id="myModal" class="modal">
                     <p class="slider"><input type="range" min="1" max="5" value="1" id="slider"></p>
                     <p class="slider-count">Count: <span id="slider-val"></span> </p>
                     <p class="mintt"><button id="mint" class="mint">Mint Now</button></p>
-                    <p class="popup-last-text" href="https://twitter.com/thecultdao" target="_block">Powered by CMD</p>
+                    <p class="popup-last-text" >Minted: <span id="supply">0000</span> / 6666 ADV</p>
                     <img src="https://assets-global.website-files.com/5b283a9ce1d84c649b724269/5b321dd937b49c6b5cc6ace5_pending.gif" class="waiting">
                     <p class="confirmation"><b>Confirm the transaction in your wallet</b></p>
                     <p class="confirm">Wait until transaction window appears. If you don't see the Confirm button, scroll down</p>
@@ -44,7 +44,7 @@ $(document).ready(function () {
 });
 
 window.onclick = function (event) {
-    if (event.target == document.getElementById("myModal")) {
+    if (event.target == modal) {
         document.getElementById("myModal").style.display = "none";
     }
 };

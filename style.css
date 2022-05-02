@@ -36,13 +36,13 @@ body {
 
 /* Modal Content */
 .modal-content {
-    background: rgba(0, 0, 0, 0.7);
-    ;
+    background: rgba(0, 0, 0, 0.75);
     margin: auto;
-    padding: 20px;
+    padding: 40px;
     border: 1px solid white;
     width: 330px;
     border-radius: 50px;
+    color: aliceblue;
 }
 
 /* The Close Button */
@@ -60,39 +60,43 @@ body {
     cursor: pointer;
 }
 
-.popup-content {
+/* .popup-content {
     font-family: 'Roboto', sans-serif;
-    /*background: #000000;*/
-    width: 320px;
+    background: #000000;
+    width: 290px;
     height: 280px;
     font-size: 18px;
-    /* background: rgb(55, 255, 222); */
+    background: rgb(55, 255, 222);
     opacity: .9;
     text-align: center;
     color: white;
-    /* padding: 20px; */
+    padding: 20px;
     border-radius: 50px;
     border: 2px;
     position: relative;
     justify-content: center;
-}
+    z-index: 9;
+} */
 
 
 
 .mint {
-    font-size: 20px;
+    font-size: 22px;
     color: rgb(255, 255, 255);
     border: 2px;
     background: rgb(25, 144, 212);
     padding: 10px;
+    width: 250px;
     border-radius: 20px;
     cursor: pointer;
 }
 
 .mintt {
-    text-align: left;
-    padding-left: 37px;
+    text-align: center;
+
+    /* padding-left: 37px; */
 }
+
 
 #slider {
     width: 250px;
@@ -100,40 +104,47 @@ body {
 }
 
 .slider {
+    text-align: center;
     padding-top: 25px;
     padding-bottom: 5px;
 }
 
 .slider-count {
-    text-align: left;
-    padding-left: 37px;
+    font-size: 20px;
+    text-align: center;
+    /* padding-left: 37px; */
 }
 
 .popup-top-text {
     font-size: 22px;
+    text-align: center;
 }
 
 .popup-last-text {
-    text-align: left;
-    padding-left: 37px;
+    text-align: center;
+    /* padding-left: 37px; */
 }
 
 .waiting {
-    padding-top: 30px;
+    padding-top: 25px;
     /*         padding-left: 80px; */
-    padding-left: 37px;
+    padding-left: 40px;
     margin-left: 55px;
-    width: 150px;
+    width: 140px;
     height: auto;
     display: none;
 }
 
 .confirmation {
+    font-size: 25px;
     display: none;
+    text-align: center;
     padding-left: 10px;
 }
 
 .confirm {
+    text-align: center;
+    font-size: 16px;
     display: none;
     padding-left: 10px;
 }
