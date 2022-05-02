@@ -40,7 +40,8 @@ body {
     margin: auto;
     padding: 40px;
     border: 1px solid white;
-    width: 330px;
+    width: 370px;
+    height: 320px;
     border-radius: 50px;
     color: aliceblue;
 }
