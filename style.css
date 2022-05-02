@@ -95,7 +95,7 @@ body {
 
 .mintt {
     text-align: center;
-
+    padding-top: 25px;
     padding-bottom: 25px;
 }
 
@@ -184,6 +184,7 @@ select {
 }
 
 .dropdown-list{
+    padding-top: 25px;
     text-align: center;
 
 }
