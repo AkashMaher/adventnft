@@ -18,7 +18,6 @@ document.write(`<div id="myModal" class="modal">
                     <p class="popup-top-text"><b>Choose How Many to Mint</b></p>
                     <div class="dropdown-list">
                     <select name="mint-val" id="mint-val" class="mint-val">
-                        <option >Select Mint</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
