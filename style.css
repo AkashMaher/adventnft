@@ -145,8 +145,8 @@ body {
 
 .waiting {
     padding-top: 25px;
-    padding-left: 40px;
-    margin-left: 55px;
+    /* padding-left: 40px;
+    margin-left: 55px; */
     width: 140px;
     height: auto;
     display: none;
