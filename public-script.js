@@ -137,6 +137,6 @@ async function onMint() {
 
 window.addEventListener('load', async () => {
     init();
-    document.querySelector("#btn-connect").addEventListener("click", onConnect);
+    document.querySelector("#connect").addEventListener("click", onConnect);
     document.querySelector("#mint-button").addEventListener("click", onMint);
 });
