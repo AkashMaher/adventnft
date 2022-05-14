@@ -90,6 +90,10 @@ async function onConnect() {
         provider = await web3Modal.connect();
 
         var web3 = new Web3(provider);
+        await web3.currentProvider.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: "0x4" }]
+        });
         var accounts = await web3.eth.getAccounts();
         account = accounts[0];
         contract = new web3.eth.Contract(ABI, ADDRESS);
