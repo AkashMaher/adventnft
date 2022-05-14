@@ -63,6 +63,8 @@ function init() {
 
 
     web3Modal = new Web3Modal({
+        network: "rinkeby",
+        theme: "dark",
         cacheProvider: false, // optional
         providerOptions, // required
     });
