@@ -101,6 +101,8 @@ async function onConnect() {
 
         document.getElementById("supply").textContent = supply;
 
+        document.getElementById('connect').innerHTML = 'Connected';
+
         console.log("Provider is ", provider, "till here")
     } catch (e) {
         console.log("Could not get a wallet connection", e);
@@ -111,11 +113,13 @@ async function onConnect() {
 
 
 async function onApprove(){
+    if(!account) return alert(`please connect wallet first`);
     await nft.methods.setApprovalForAll(ADDRESS,true).send({from:account});
     console.log(`You approved contract successfully, now you can stake your nfts`);
 }
 async function onStake() {
-
+    if (!account) return alert(`please connect wallet first`);
+    
     document.getElementById("myModal").style.display = "block";
 
     document.getElementById('stake').onclick = () => {
