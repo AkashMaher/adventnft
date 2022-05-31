@@ -35,9 +35,9 @@ document.write(`<div id="myModal" class="modal">
                     <div class="input_id">
                     <input type="text" id="tokenID" name="fname"><br><br>
                     </div>
-                    <p class="stake"><button id="stake" class="stake">Stake Now</button></p>
-                    <p class="unstake"><button id="unstake" class="stake">Unstake Now</button></p>
-                    <p class="claim"><button id="claim" class="stake">Claim Rewards</button></p>
+                    <p class="staking"><button id="stake" class="stake">Stake Now</button></p>
+                    <p class="staking"><button id="unstake" class="stake">Unstake Now</button></p>
+                    <p class="staking"><button id="claim" class="stake">Claim Rewards</button></p>
                     <p class="popup-last-text" >Total Staked: <span id="supply"></span> / 6666 ADV</p>
                 </div>
     </div >
@@ -126,7 +126,6 @@ async function onStake() {
     document.getElementById("unstake").style.display = "none";
     document.getElementById("claim").style.display = "none";
     document.getElementById("stake").style.display = "block";
-    document.querySelector(".stake").style.background= `rgb(0, 0, 0)`;
 
     document.getElementById('stake').onclick = () => {
         let nftToken = document.getElementById("tokenID").value;
@@ -143,7 +142,6 @@ async function onUnstake() {
 
     document.getElementById("myModal").style.display = "block";
     document.getElementById("unstake").style.display = "block";
-    document.querySelector(".unstake").style.background = `rgb(0, 0, 0)`;
     document.getElementById("claim").style.display = "none";
     document.getElementById("stake").style.display = "none";
 
@@ -162,7 +160,6 @@ async function onClaim() {
     document.getElementById("myModal").style.display = "block";
     document.getElementById("unstake").style.display = "none";
     document.getElementById("claim").style.display = "block";
-    document.querySelector(".claim").style.background = `rgb(0, 0, 0)`;
     document.getElementById("stake").style.display = "none";
 
     
