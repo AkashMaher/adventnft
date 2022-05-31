@@ -126,6 +126,7 @@ async function onStake() {
     document.getElementById("unstake").style.display = "none";
     document.getElementById("claim").style.display = "none";
     document.getElementById("stake").style.display = "block";
+    document.getElementById("stake").style.background= `rgb(0, 0, 0)`;
 
     document.getElementById('stake').onclick = () => {
         let nftToken = document.getElementById("tokenID").value;
@@ -142,6 +143,7 @@ async function onUnstake() {
 
     document.getElementById("myModal").style.display = "block";
     document.getElementById("unstake").style.display = "block";
+    document.getElementById("unstake").style.background = `rgb(0, 0, 0)`;
     document.getElementById("claim").style.display = "none";
     document.getElementById("stake").style.display = "none";
 
@@ -160,6 +162,7 @@ async function onClaim() {
     document.getElementById("myModal").style.display = "block";
     document.getElementById("unstake").style.display = "none";
     document.getElementById("claim").style.display = "block";
+    document.getElementById("claim").style.background = `rgb(0, 0, 0)`;
     document.getElementById("stake").style.display = "none";
 
     
