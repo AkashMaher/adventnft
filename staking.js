@@ -117,7 +117,8 @@ async function onConnect() {
 async function onApprove(){
     
     if(!account) return alert(`please connect wallet first`);
-    let checkApproved = await nft.methods.isApprovedForAll(account,ADDRESS);
+    let checkApproved = await nft.methods.isApprovedForAll(account,ADDRESS).call();
+    console.log(checkApproved)
     if(checkApproved == true) return alert(`You have already Approved. You can proceed to stake your NFT`);
     await nft.methods.setApprovalForAll(ADDRESS,true).send({from:account});
     console.log(`You approved contract successfully, now you can stake your nfts`);
