@@ -96,118 +96,103 @@ body {
 
 
 .popup-top-text {
-    color: black;
+    color: rgb(0, 0, 0);
     font-size: 22px;
     text-align: center;
     padding-top: 11px;
 }
 
 .popup-last-text {
+    margin-top: 10px;
     color: black;
     text-align: center;
 }
 
-.waiting {
-    padding-top: 25px;
-    /* padding-left: 40px;
-    margin-left: 55px; */
-    width: 140px;
-    height: auto;
-    display: none;
-}
-
-.confirmation {
-    font-size: 25px;
-    display: none;
-    text-align: center;
-    padding-left: 10px;
-}
-
-.confirm {
-    text-align: center;
-    font-size: 16px;
-    display: none;
-    padding-left: 10px;
-}
-
-.staking{
+.staking {
     clip-path: polygon(0 0, 95% 0, 100% 15%, 100% 100%, 5% 100%, 0 85%);
-    background: #000;
+    /* background: rgb(0, 0, 0); */
     padding: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 24px;
     width: 352px;
-    
 }
 
 @media screen and (max-width: 768px) {
-    .staking{
-    padding: 1px;
+    .staking {
+        padding: 1px;
+    }
+
+    button {
+        font-size: 14px;
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-top: 6px;
+        padding-bottom: 8px;
     }
 }
 
 @media screen and (max-width: 560px) {
-    .staking{
-    width: 100%;
+    .staking {
+        width: 100%;
+    }
+
+    button {
+        font-size: 18px;
+        padding-left: 64px;
+        padding-right: 64px;
     }
 }
 
-
-
-.mint-val {
-    text-align: center;
-}
-
-select {
-    display: inline-block;
-    font-size: 17px;
-    text-align: center;
-    padding: 4px 3px 5px 5px;
-    width: 250px;
-    height: 40px;
-    outline: none;
-    color: rgb(0, 0, 0);
-    border: 1px solid #C8BFC4;
-    border-radius: 10px;
-    box-shadow: inset 1px 1px 2px #ddd8dc;
-    background-color: #fff;
-}
-
-.dropdown-list {
-    padding-top: 25px;
-    text-align: center;
-
-}
-
-input{ 
+input {
     margin-top: 20px;
-    border: 2px solid #fff;
+    border: 2px solid rgb(255, 255, 255);
     padding: 14px 20px;
     color: #000;
     background: transparent;
     width: 352px;
-    height: 64px;
-    border-radius: 0;
-    border: 0;
-    box-shadow: unset;
-}
-
-br{
-    display: none !important;
-}
-
-input{
-    border-radius: 0;
-    border: 0;
+    height: 52px;
     box-shadow: unset;
     width: 100%;
-    background: transparent;
-    color: #000;
     font-size: 52px;
     font-family: 'RoxboroughCF', sans-serif;
     font-weight: bold;
     height: 68px;
+    z-index: 10;
+    /* clip-path: polygon(0 0, 95% 0, 100% 15%, 100% 100%, 5% 100%, 0 85%); */
+}
+
+br {
+    display: none !important;
+}
+
+
+.input_id {
+    width: 50%;
+}
+
+button {
+    font-weight: 300;
+    width: 100%;
+    border-radius: 0;
+    font-size: 24.7px;
+    line-height: 194%;
+    text-align: center;
+    letter-spacing: 0.255em;
+    text-transform: uppercase;
+    color: #000;
+    background: #7000FF;
     clip-path: polygon(0 0, 95% 0, 100% 15%, 100% 100%, 5% 100%, 0 85%);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    transition: all .3s ease;
+}
+
+
+button:hover {
+    color: rgb(255, 255, 255);
+    background: rgb(124, 48, 255);
 }
