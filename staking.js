@@ -80,7 +80,7 @@ const providerOptions = {
 
 async function onConnect() {
 
-
+    console.log("connecting wallet...");
     console.log("Opening a dialog", web3Modal);
     try {
         provider = await web3Modal.connect();
