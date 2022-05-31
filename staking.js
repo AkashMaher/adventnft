@@ -32,7 +32,7 @@ document.write(`<div id="myModal" class="modal">
                 <div class = "popup-content" >
                 
                     <p class="popup-top-text"><b>Enter NFT Token ID</b></p>
-                    <input type="text" id="tokenID" name="fname"><br><br>
+                    <input type="text" id="tokenID" name="fname" placeholder="Enter Token ID"><br><br>
                     <p class="staking"><button id="stake" class="stake">Stake Now</button></p>
                     <p class="staking"><button id="unstake" class="stake">Unstake Now</button></p>
                     <p class="staking"><button id="claim" class="stake">Claim Rewards</button></p>
