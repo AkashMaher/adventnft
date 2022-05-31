@@ -170,7 +170,9 @@ async function onClaim() {
 
 }
 
-
+$(document).ready(function () {
+    document.querySelector("#connect").addEventListener("click", onConnect);
+});
 
 window.addEventListener('load', async () => {
     init();
