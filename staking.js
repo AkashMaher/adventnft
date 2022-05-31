@@ -171,12 +171,12 @@ async function onClaim() {
 }
 
 $(document).ready(function () {
-    document.querySelector("#connect").addEventListener("click", onConnect);
+    document.getElementById("connect").addEventListener("click", onConnect);
 });
 
 window.addEventListener('load', async () => {
     init();
-    document.querySelector("#connect").addEventListener("click", onConnect);
+    document.getElementById("connect").addEventListener("click", onConnect);
     document.querySelector("#Stake").addEventListener("click", onStake);
     document.querySelector("#approve").addEventListener("click", onApprove);
     document.querySelector("#Unstake").addEventListener("click", onUnstake);
