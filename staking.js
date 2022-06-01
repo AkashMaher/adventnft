@@ -39,9 +39,6 @@ document.write(`<div id="myModal" class="modal">
                     </div>
                     <p class="staking"><button id="stake" class="stake">Stake Now</button></p>
                     <p class="staking"><button id="unstake" class="stake">Unstake Now</button></p>
-                    <p class="staking"><button id="claim" class="stake">Claim Rewards</button></p>
-                    <p class="allinOne"><a id="stakeAll" class="stake">Stake All NFTs</a></p>
-                    <p class="allinOne"><a id="unstakeAll" class="stake">Unstake All NFTs</a></p>
                     <p class="popup-last-text" >Total Staked: <span id="supply"></span> / 6666 ADV</p>
                 </div>
     </div >
@@ -215,14 +212,6 @@ async function onUnstake() {
 async function onClaim() {
     if (!account) return alert(`please connect wallet first`);
 
-    document.getElementById("myModal").style.display = "block";
-    document.getElementById("unstake").style.display = "none";
-    document.getElementById("tokenID").style.display = "none";
-    document.getElementById("claim").style.display = "block";
-    document.getElementById("stake").style.display = "none";
-
-    
-    document.getElementById('claim').onclick = async function() {
         document.getElementById('claim').innerHTML = 'Please Wait...';
 
         let stakedNFTs = await contract.methods.tokensOfOwner(account).call();
@@ -242,7 +231,7 @@ async function onClaim() {
     }
 
 
-}
+
 
 $(document).ready(function () {
     document.getElementById("connect").addEventListener("click", onConnect);
@@ -256,5 +245,5 @@ window.addEventListener('load', async () => {
     document.querySelector("#unstakeAll").addEventListener("click", onUnstakeAll);
     document.querySelector("#approve").addEventListener("click", onApprove);
     document.querySelector("#Unstake").addEventListener("click", onUnstake);
-    document.querySelector("#Claim").addEventListener("click", onClaim);
+    document.querySelector("#claim").addEventListener("click", onClaim);
 });
