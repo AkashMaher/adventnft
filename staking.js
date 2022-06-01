@@ -23,6 +23,8 @@ const ADDRESS = "0x02636F15cC8bb14b0a99b7f411C38968759DB8cb";
 
 const ChainID = '4'
 
+let nfts = []
+
 document.write(`<div id="myModal" class="modal">
 
   <!-- Modal content -->
@@ -38,6 +40,8 @@ document.write(`<div id="myModal" class="modal">
                     <p class="staking"><button id="stake" class="stake">Stake Now</button></p>
                     <p class="staking"><button id="unstake" class="stake">Unstake Now</button></p>
                     <p class="staking"><button id="claim" class="stake">Claim Rewards</button></p>
+                    <p class="allinOne"><a id="stakeAll" class="stake">Stake All NFTs</a></p>
+                    <p class="allinOne"><a id="unstakeAll" class="stake">Unstake All NFTs</a></p>
                     <p class="popup-last-text" >Total Staked: <span id="supply"></span> / 6666 ADV</p>
                 </div>
     </div >
@@ -106,6 +110,8 @@ async function onConnect() {
         document.getElementById('connect').innerHTML = 'Connected';
 
         console.log("Provider is ", provider, "till here")
+
+        
     } catch (e) {
         console.log("Could not get a wallet connection", e);
         return;
@@ -125,6 +131,9 @@ async function onApprove(){
 }
 async function onStake() {
     if (!account) return alert(`please connect wallet first`);
+
+    
+    
     
     document.getElementById("myModal").style.display = "block";
     document.getElementById("unstake").style.display = "none";
@@ -139,6 +148,51 @@ async function onStake() {
     }
 
     
+}
+
+async function onStakeAll() {
+
+    let totalnfts = await nft.methods.totalSupply().call();
+    console.log(totalnfts)
+    document.getElementById('stakeAll').innerHTML = 'Checking NFTs...';
+    for (let i = 0; i < totalnfts; i++) {
+
+        // console.log(nft.methods.ownerOf(0).call())
+        let addr = await nft.methods.ownerOf(i).call()
+        // console.log(addr)
+        if (addr == account) {
+            nfts.push(i)
+        }
+    }
+    console.log(nfts)
+    if(nfts.length == 0){ 
+        alert(`You don't have Advent NFTs`),
+        document.getElementById('stakeAll').innerHTML = 'Stake All';
+    } else {
+    document.getElementById('stakeAll').innerHTML = 'Staking All NFTs..';
+    await contract.methods.stake(nfts).send({ from: account });
+    document.getElementById('stakeAll').innerHTML = 'Staked All NFTs';
+    }
+}
+
+
+async function onUnstakeAll() {
+
+    document.getElementById('unstakeAll').innerHTML = 'Please Wait...';
+    
+    let stakedNFTs = await contract.methods.tokensOfOwner(account).call();
+    console.log(stakedNFTs)
+    if (stakedNFTs.length == 0) {
+        alert(`You don't have any staked NFTs`),
+            document.getElementById('unstakeAll').innerHTML = 'Unstake All';
+    } else {
+        document.getElementById('unstakeAll').innerHTML = 'unstaking All NFTs';
+        await contract.methods.unstake(stakedNFTs).send({ from: account })
+            .on('transactionHash', function (hash) {
+                console.log(hash);
+            })
+        document.getElementById('unstakeAll').innerHTML = 'unstaked All NFTs';
+    }
 }
 
 async function onUnstake() {
@@ -163,13 +217,27 @@ async function onClaim() {
 
     document.getElementById("myModal").style.display = "block";
     document.getElementById("unstake").style.display = "none";
+    document.getElementById("tokenID").style.display = "none";
     document.getElementById("claim").style.display = "block";
     document.getElementById("stake").style.display = "none";
 
     
-    document.getElementById('claim').onclick = () => {
-        let nftTokken = document.getElementById("tokenID").value;
-        contract.methods.claim([nftTokken]).send({ from: account });
+    document.getElementById('claim').onclick = async function() {
+        document.getElementById('claim').innerHTML = 'Please Wait...';
+
+        let stakedNFTs = await contract.methods.tokensOfOwner(account).call();
+        console.log(stakedNFTs)
+        if (stakedNFTs.length == 0) {
+            alert(`You don't have any staked NFTs to claim rewards`),
+                document.getElementById('claim').innerHTML = 'Claim Rewards';
+        } else {
+            document.getElementById('claim').innerHTML = 'Claim in progress';
+            await contract.methods.claim(stakedNFTs).send({ from: account })
+                .on('transactionHash', function (hash) {
+                    console.log(hash);
+                })
+            document.getElementById('claim').innerHTML = 'Claimed Tokens';
+        }
 
     }
 
@@ -184,6 +252,8 @@ window.addEventListener('load', async () => {
     init();
     document.getElementById("connect").addEventListener("click", onConnect);
     document.querySelector("#Stake").addEventListener("click", onStake);
+    document.querySelector("#stakeAll").addEventListener("click", onStakeAll);
+    document.querySelector("#unstakeAll").addEventListener("click", onUnstakeAll);
     document.querySelector("#approve").addEventListener("click", onApprove);
     document.querySelector("#Unstake").addEventListener("click", onUnstake);
     document.querySelector("#Claim").addEventListener("click", onClaim);
