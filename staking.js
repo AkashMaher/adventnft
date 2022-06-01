@@ -148,6 +148,7 @@ async function onStake() {
 }
 
 async function onStakeAll() {
+    if (!account) return alert(`please connect wallet first`);
 
     let totalnfts = await nft.methods.totalSupply().call();
     console.log(totalnfts)
@@ -174,6 +175,7 @@ async function onStakeAll() {
 
 
 async function onUnstakeAll() {
+    if (!account) return alert(`please connect wallet first`);
 
     document.getElementById('unstakeAll').innerHTML = 'Please Wait...';
     
