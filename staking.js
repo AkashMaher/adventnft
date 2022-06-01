@@ -129,9 +129,6 @@ async function onApprove(){
 async function onStake() {
     if (!account) return alert(`please connect wallet first`);
 
-    
-    
-    
     document.getElementById("myModal").style.display = "block";
     document.getElementById("unstake").style.display = "none";
     document.getElementById("claim").style.display = "none";
@@ -214,21 +211,14 @@ async function onUnstake() {
 async function onClaim() {
     if (!account) return alert(`please connect wallet first`);
 
-        document.getElementById('claim').innerHTML = 'Please Wait...';
-
         let stakedNFTs = await contract.methods.tokensOfOwner(account).call();
         console.log(stakedNFTs)
-        if (stakedNFTs.length == 0) {
-            alert(`You don't have any staked NFTs to claim rewards`),
-                document.getElementById('claim').innerHTML = 'Claim Rewards';
-        } else {
-            document.getElementById('claim').innerHTML = 'Claim in progress';
-            await contract.methods.claim(stakedNFTs).send({ from: account })
-                .on('transactionHash', function (hash) {
-                    console.log(hash);
-                })
-            document.getElementById('claim').innerHTML = 'Claimed Tokens';
-        }
+        if (stakedNFTs.length == 0) return alert(`You don't have any staked NFTs to claim rewards`);
+        await contract.methods.claim(stakedNFTs).send({ from: account })
+            .on('transactionHash', function (hash) {
+                console.log(hash);
+            })
+            alert('Success!, Tokens Claimed Successfully, https://etherscan.io')
 
     }
 
