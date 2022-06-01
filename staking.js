@@ -131,7 +131,6 @@ async function onStake() {
 
     document.getElementById("myModal").style.display = "block";
     document.getElementById("unstake").style.display = "none";
-    document.getElementById("claim").style.display = "none";
     document.getElementById("stake").style.display = "block";
 
     document.getElementById('stake').onclick = () => {
@@ -196,7 +195,6 @@ async function onUnstake() {
 
     document.getElementById("myModal").style.display = "block";
     document.getElementById("unstake").style.display = "block";
-    document.getElementById("claim").style.display = "none";
     document.getElementById("stake").style.display = "none";
 
     document.getElementById('unstake').onclick = () => {
