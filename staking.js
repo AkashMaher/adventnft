@@ -130,6 +130,7 @@ async function onConnect() {
         EarnedTokens = parseFloat(EarnedTokens)
         EarnedTokens = EarnedTokens.toFixed(2)
         document.getElementById("stakedBalance").textContent = `BALANCE : ${EarnedTokens} $ADV`;
+        document.getElementById("stakedBalanceMobile").textContent = `BALANCE : ${EarnedTokens} $ADV`;
         document.getElementById("UserEarning").textContent = `BALANCE : ${EarnedTokens} $ADV`;
         console.log(EarnedTokens)
 
@@ -159,6 +160,7 @@ async function onConnect() {
             EarnedTokens = parseFloat(EarnedTokens)
             EarnedTokens = EarnedTokens.toFixed(2)
             document.getElementById("stakedBalance").textContent = `BALANCE : ${EarnedTokens} $ADV`;
+            document.getElementById("stakedBalanceMobile").textContent = `BALANCE : ${EarnedTokens} $ADV`;
             document.getElementById("UserEarning").textContent = `BALANCE : ${EarnedTokens} $ADV`;
 
         }, 30000);
@@ -205,6 +207,7 @@ async function connectRefresh() {
         EarnedTokens = parseFloat(EarnedTokens)
         EarnedTokens = EarnedTokens.toFixed(2)
         document.getElementById("stakedBalance").textContent = `BALANCE : ${EarnedTokens} $ADV`;
+        document.getElementById("stakedBalanceMobile").textContent = `BALANCE : ${EarnedTokens} $ADV`;
         document.getElementById("UserEarning").textContent = `BALANCE : ${EarnedTokens} $ADV`;
         console.log(EarnedTokens)
 
@@ -230,6 +233,7 @@ async function connectRefresh() {
             EarnedTokens = parseFloat(EarnedTokens)
             EarnedTokens = EarnedTokens.toFixed(2)
             document.getElementById("stakedBalance").textContent = `BALANCE : ${EarnedTokens} $ADV`;
+            document.getElementById("stakedBalanceMobile").textContent = `BALANCE : ${EarnedTokens} $ADV`;
             document.getElementById("UserEarning").textContent = `BALANCE : ${EarnedTokens} $ADV`;
 
         }, 30000);
@@ -378,6 +382,7 @@ async function onUnstakeAll() {
         EarnedTokens = parseFloat(EarnedTokens)
         EarnedTokens = EarnedTokens.toFixed(2)
         document.getElementById("stakedBalance").textContent = `BALANCE : ${EarnedTokens} $ADV`;
+        document.getElementById("stakedBalanceMobile").textContent = `BALANCE : ${EarnedTokens} $ADV`;
         document.getElementById("UserEarning").textContent = `BALANCE : ${EarnedTokens} $ADV`;
         console.log(EarnedTokens)
     }
@@ -408,6 +413,7 @@ async function onUnstake() {
         EarnedTokens = parseFloat(EarnedTokens)
         EarnedTokens = EarnedTokens.toFixed(2)
         document.getElementById("stakedBalance").textContent = `BALANCE : ${EarnedTokens} $ADV`;
+        document.getElementById("stakedBalanceMobile").textContent = `BALANCE : ${EarnedTokens} $ADV`;
         document.getElementById("UserEarning").textContent = `BALANCE : ${EarnedTokens} $ADV`;
         console.log(EarnedTokens)
     }
@@ -448,6 +454,7 @@ async function onClaim() {
     EarnedTokens = parseFloat(EarnedTokens)
     EarnedTokens = EarnedTokens.toFixed(2)
     document.getElementById("stakedBalance").textContent = `BALANCE : ${EarnedTokens} $ADV`;
+    document.getElementById("stakedBalanceMobile").textContent = `BALANCE : ${EarnedTokens} $ADV`;
     document.getElementById("UserEarning").textContent = `BALANCE : ${EarnedTokens} $ADV`;
     console.log(EarnedTokens)
 
