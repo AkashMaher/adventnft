@@ -44,7 +44,6 @@ document.write(`<div id="myModal" class="modal">
                     </div>
                     <p class="staking"><button id="stake" class="stake">Stake Now</button></p>
                     <p class="staking"><button id="unstake" class="stake">Unstake Now</button></p>
-                    <p class="popup-last-text" >Total Staked: <span id="supply"></span> / 6666 ADV</p>
                 </div>
     </div >
   </div>
@@ -137,7 +136,7 @@ async function onConnect() {
         document.getElementById("Rare").textContent = `${Counts[1]}/`;
         document.getElementById("Original").textContent = `${Counts[2]}/`;
 
-        document.getElementById("supply").textContent = supply;
+        // document.getElementById("supply").textContent = supply;
 
         document.getElementById('connectName').innerHTML = 'Connected';
 
@@ -178,7 +177,7 @@ async function connectRefresh() {
 
         contract = new web3.eth.Contract(ABI, ADDRESS);
 
-        supply = await contract.methods.totalStaked().call();
+        // supply = await contract.methods.totalStaked().call();
 
         Counts = await contract.methods.getCounts().call();
 
@@ -196,7 +195,7 @@ async function connectRefresh() {
         document.getElementById("Rare").textContent = `${Counts[1]}/`;
         document.getElementById("Original").textContent = `${Counts[2]}/`;
 
-        document.getElementById("supply").textContent = supply;
+        // document.getElementById("supply").textContent = supply;
 
         document.getElementById('connectName').innerHTML = 'Connected';
 
