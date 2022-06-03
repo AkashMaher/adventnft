@@ -211,3 +211,15 @@ button:hover {
     color: rgb(255, 255, 255);
     background: rgb(45, 14, 98);
 }
+
+#userEarning {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 24.7px;
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    transition: all .3s ease;
+}
