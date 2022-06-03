@@ -128,6 +128,7 @@ async function onConnect() {
         EarnedTokens = web3.utils.fromWei(`${EarnedTokens}`, 'ether');
         EarnedTokens = parseFloat(EarnedTokens)
         EarnedTokens = EarnedTokens.toFixed(2)
+        document.getElementById("stakedBalance").textContent = EarnedTokens;
         console.log(EarnedTokens)
 
 
@@ -186,6 +187,7 @@ async function connectRefresh() {
         EarnedTokens = web3.utils.fromWei(`${EarnedTokens}`, 'ether');
         EarnedTokens = parseFloat(EarnedTokens)
         EarnedTokens = EarnedTokens.toFixed(2)
+        document.getElementById("stakedBalance").textContent = EarnedTokens;
         console.log(EarnedTokens)
 
 
