@@ -424,7 +424,7 @@ async function onClaim() {
         console.log(stakedNFTs)
         if (stakedNFTs.length == 0) return toastr.warning(`You don't have any staked NFTs to claim rewards`,'WARNING');
 
-        document.getElementById('claimName').innerHTML = 'Processing...';
+        document.getElementById('claimName').textContent = 'Processing...';
         toastr.info('Please wait...', 'PROCESSING!')
         
         EarnedTokens = await contract.methods.earningInfo(stakedNFTs).call()
@@ -433,14 +433,14 @@ async function onClaim() {
         EarnedTokens = EarnedTokens.toFixed(2)
         console.log(EarnedTokens)
 
-        document.getElementById('claimName').innerHTML = 'Claim in Progress';
+        document.getElementById('claimName').textContent = 'Claim in Progress';
         await contract.methods.claim(stakedNFTs).send({ from: account })
             .on('transactionHash', function (hash) {
                 console.log(hash);
                 tnxHash = hash;
             })
             console.log(tnxHash)
-            document.getElementById('claimName').innerHTML = 'Claimed Tokens';
+            document.getElementById('claimName').textContent = 'Claimed Tokens';
     toastr.success(`Tokens Claimed Successfully, <a href="https://rinkeby.etherscan.io/tx/${tnxHash}" target="_blank" style="color:yellow;">view on etherscan</a>`, 'SUCCESS', { timeOut: 30 * 1000, enableHtml: true, tapToDismiss: false })
             
     EarnedTokens = await contract.methods.earningInfo(stakedNFTs).call()
