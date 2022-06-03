@@ -141,13 +141,27 @@ async function onConnect() {
 
         // document.getElementById("supply").textContent = supply;
 
-        document.getElementById('connectName').innerHTML = 'Connected';
+        document.getElementById('connectName').textContent = 'Connected';
 
         console.log("Provider is ", provider, "till here")
         console.log('check', provider.isMetamask)
 
         sessionStorage.setItem('isWalletConnected', true)
         toastr.success('Wallet Connected Successfully', 'SUCCESS')
+        setInterval(async function () {
+            if (!account) return;
+            let isConnected = sessionStorage.getItem('isWalletConnected');
+            // console.log(isConnected)
+            if (!isConnected) return console.log('Not Connected'), web3Modal.clearCachedProvider();
+
+            EarnedTokens = await contract.methods.earningInfo(stakedNFTs).call()
+            EarnedTokens = web3.utils.fromWei(`${EarnedTokens}`, 'ether');
+            EarnedTokens = parseFloat(EarnedTokens)
+            EarnedTokens = EarnedTokens.toFixed(2)
+            document.getElementById("stakedBalance").textContent = `BALANCE : ${EarnedTokens} $ADV`;
+            document.getElementById("UserEarning").textContent = `BALANCE : ${EarnedTokens} $ADV`;
+
+        }, 30000);
     } catch (e) {
         console.log("Could not get a wallet connection", e);
         return;
@@ -202,9 +216,23 @@ async function connectRefresh() {
 
         // document.getElementById("supply").textContent = supply;
 
-        document.getElementById('connectName').innerHTML = 'Connected';
+        document.getElementById('connectName').textContent = 'Connected';
 
         console.log("Provider is ", provider, "till here")
+        setInterval(async function () {
+            if (!account) return;
+            let isConnected = sessionStorage.getItem('isWalletConnected');
+            // console.log(isConnected)
+            if (!isConnected) return console.log('Not Connected'), web3Modal.clearCachedProvider();
+
+            EarnedTokens = await contract.methods.earningInfo(stakedNFTs).call()
+            EarnedTokens = web3.utils.fromWei(`${EarnedTokens}`, 'ether');
+            EarnedTokens = parseFloat(EarnedTokens)
+            EarnedTokens = EarnedTokens.toFixed(2)
+            document.getElementById("stakedBalance").textContent = `BALANCE : ${EarnedTokens} $ADV`;
+            document.getElementById("UserEarning").textContent = `BALANCE : ${EarnedTokens} $ADV`;
+
+        }, 30000);
     } catch (e) {
         console.log("Could not get a wallet connection", e);
         return;
@@ -385,8 +413,6 @@ async function onUnstake() {
     }
 
 
-
-
 }
 
 
@@ -426,6 +452,8 @@ async function onClaim() {
     console.log(EarnedTokens)
 
     }
+
+
 
 
 
