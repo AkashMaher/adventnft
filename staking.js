@@ -263,7 +263,7 @@ async function onApprove(){
 async function onStake() {
     if (!account) return toastr.error(`Please Connect Wallet First`,'ERROR');
 
-    if (!checkApproved) return toastr.error(`You haven't Approved Smart Contract. <a onclick="onApprove()" style="color:yellow;">Click Here To Approve</a>`, 'INFO',{timeOut:30*10000, enableHtml:true});
+    if (!checkApproved) return toastr.error(`You haven't Approved Smart Contract. <a onclick="onApprove()" style="color:yellow;">Click Here To Approve</a>`, 'ERROR',{timeOut:30*10000, enableHtml:true});
 
     toastr.info('Enter Token Id that you wants to stake', 'Processing...')
     let nftToken;
@@ -288,7 +288,7 @@ async function onStake() {
 async function onStakeAll() {
     if (!account) return toastr.error(`Please Connect Wallet First`,'ERROR');
 
-    if (!checkApproved) return toastr.error(`You haven't Approved Smart Contract. <a onclick="onApprove()" style="color:yellow;">Click Here To Approve</a>`, 'INFO', { timeOut: 30 * 10000, enableHtml: true });
+    if (!checkApproved) return toastr.error(`You haven't Approved Smart Contract. <a onclick="onApprove()" style="color:yellow;">Click Here To Approve</a>`, 'ERROR', { timeOut: 30 * 10000, enableHtml: true });
 
     toastr.info('Please wait...', 'Fetching NFT info', {timeOut:20*1000})
     let totalnfts = await nft.methods.totalSupply().call();
@@ -324,6 +324,8 @@ async function onStakeAll() {
 
 async function onUnstakeAll() {
     if (!account) return toastr.error(`Please Connect Wallet First`,'ERROR');
+    if (!checkApproved) return toastr.error(`You haven't Approved Smart Contract. <a onclick="onApprove()" style="color:yellow;">Click Here To Approve</a>`, 'ERROR', { timeOut: 30 * 10000, enableHtml: true });
+
     toastr.info('Please wait', 'Processing')
     document.getElementById('unstakeAll').innerHTML = 'Please Wait...';
     
@@ -355,6 +357,7 @@ async function onUnstakeAll() {
 
 async function onUnstake() {
     if (!account) return toastr.error(`Please Connect Wallet First`,'ERROR');
+    if (!checkApproved) return toastr.error(`You haven't Approved Smart Contract. <a onclick="onApprove()" style="color:yellow;">Click Here To Approve</a>`, 'ERROR', { timeOut: 30 * 10000, enableHtml: true });
     if (stakedNFTs.length == 0) return toastr.warning(`You don't have any staked NFTs to claim rewards`, 'WARNING');
     toastr.info('Enter Token Id That You wants to Unstake',`INFO`);
     let nftTokken;
@@ -390,7 +393,7 @@ async function onUnstake() {
 
 async function onClaim() {
     if (!account) return toastr.error(`Please Connect Wallet First`,'ERROR');
-
+    if (!checkApproved) return toastr.error(`You haven't Approved Smart Contract. <a onclick="onApprove()" style="color:yellow;">Click Here To Approve</a>`, 'ERROR', { timeOut: 30 * 10000, enableHtml: true });
         // let stakedNFTs = await contract.methods.tokensOfOwner(account).call();
         console.log(stakedNFTs)
         if (stakedNFTs.length == 0) return toastr.warning(`You don't have any staked NFTs to claim rewards`,'WARNING');
