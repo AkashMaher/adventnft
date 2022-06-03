@@ -139,7 +139,7 @@ async function onConnect() {
 
         document.getElementById("supply").textContent = supply;
 
-        document.getElementById('connect').innerHTML = 'Connected';
+        document.getElementById('connectName').innerHTML = 'Connected';
 
         console.log("Provider is ", provider, "till here")
         console.log('check', provider.isMetamask)
@@ -198,7 +198,7 @@ async function connectRefresh() {
 
         document.getElementById("supply").textContent = supply;
 
-        document.getElementById('connect').innerHTML = 'Connected';
+        document.getElementById('connectName').innerHTML = 'Connected';
 
         console.log("Provider is ", provider, "till here")
     } catch (e) {
