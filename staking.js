@@ -338,6 +338,7 @@ async function onStakeAll() {
             console.log(hash);
             tnxHash = hash;
         })
+        stakedNFTs = await contract.methods.tokensOfOwner(account).call();
         toastr.success(`You were staked your all ${nfts.length} Advent NFTs, <a href="https://rinkeby.etherscan.io/tx/${tnxHash}" target="_blank" style="color:yellow;">view on etherscan</a>`, 'SUCCESS', { timeOut: 30 * 1000, enableHtml: true, tapToDismiss: false })
     
         document.getElementById('stakeAll').innerHTML = 'Staked All NFTs';
@@ -368,6 +369,7 @@ async function onUnstakeAll() {
 
         document.getElementById('unstakeAll').innerHTML = 'unstaked All NFTs';
 
+        stakedNFTs = await contract.methods.tokensOfOwner(account).call();
         EarnedTokens = await contract.methods.earningInfo(stakedNFTs).call()
         EarnedTokens = web3.utils.fromWei(`${EarnedTokens}`, 'ether');
         EarnedTokens = parseFloat(EarnedTokens)
@@ -399,6 +401,7 @@ async function onUnstake() {
         })
         toastr.success(`Token Id ${nftTokken} were unstaked, <a href="https://rinkeby.etherscan.io/tx/${tnxHash}" target="_blank" style="color:yellow;">view on etherscan</a>`, 'SUCCESS', { timeOut: 30 * 1000, enableHtml: true, tapToDismiss: false })
         
+        stakedNFTs = await contract.methods.tokensOfOwner(account).call();
         EarnedTokens = await contract.methods.earningInfo(stakedNFTs).call()
         EarnedTokens = web3.utils.fromWei(`${EarnedTokens}`, 'ether');
         EarnedTokens = parseFloat(EarnedTokens)
@@ -424,6 +427,7 @@ async function onClaim() {
         document.getElementById('claimName').textContent = 'Processing...';
         toastr.info('Please wait...', 'PROCESSING!')
         
+        stakedNFTs = await contract.methods.tokensOfOwner(account).call();
         EarnedTokens = await contract.methods.earningInfo(stakedNFTs).call()
         EarnedTokens = web3.utils.fromWei(`${EarnedTokens}`, 'ether');
         EarnedTokens = parseFloat(EarnedTokens)
