@@ -156,6 +156,7 @@ async function onConnect() {
             // console.log(isConnected)
             if (!isConnected) return console.log('Not Connected'), web3Modal.clearCachedProvider();
 
+            stakedNFTs = await contract.methods.tokensOfOwner(account).call();
             EarnedTokens = await contract.methods.earningInfo(stakedNFTs).call()
             EarnedTokens = web3.utils.fromWei(`${EarnedTokens}`, 'ether');
             EarnedTokens = parseFloat(EarnedTokens)
@@ -163,6 +164,12 @@ async function onConnect() {
             document.getElementById("stakedBalance").textContent = `BALANCE : ${EarnedTokens} $ADV`;
             document.getElementById("stakedBalanceMobile").textContent = `BALANCE : ${EarnedTokens} $ADV`;
             document.getElementById("UserEarning").textContent = `BALANCE : ${EarnedTokens} $ADV`;
+
+            Counts = await contract.methods.getCounts().call();
+            console.log(Counts)
+            document.getElementById("Legendary").textContent = `${Counts[0]}/`;
+            document.getElementById("Rare").textContent = `${Counts[1]}/`;
+            document.getElementById("Original").textContent = `${Counts[2]}/`;
 
         }, 30000);
     } catch (e) {
@@ -229,6 +236,7 @@ async function connectRefresh() {
             // console.log(isConnected)
             if (!isConnected) return console.log('Not Connected'), web3Modal.clearCachedProvider();
 
+            stakedNFTs = await contract.methods.tokensOfOwner(account).call();
             EarnedTokens = await contract.methods.earningInfo(stakedNFTs).call()
             EarnedTokens = web3.utils.fromWei(`${EarnedTokens}`, 'ether');
             EarnedTokens = parseFloat(EarnedTokens)
@@ -236,6 +244,12 @@ async function connectRefresh() {
             document.getElementById("stakedBalance").textContent = `BALANCE : ${EarnedTokens} $ADV`;
             document.getElementById("stakedBalanceMobile").textContent = `BALANCE : ${EarnedTokens} $ADV`;
             document.getElementById("UserEarning").textContent = `BALANCE : ${EarnedTokens} $ADV`;
+
+            Counts = await contract.methods.getCounts().call();
+            console.log(Counts)
+            document.getElementById("Legendary").textContent = `${Counts[0]}/`;
+            document.getElementById("Rare").textContent = `${Counts[1]}/`;
+            document.getElementById("Original").textContent = `${Counts[2]}/`;
 
         }, 30000);
     } catch (e) {
