@@ -28,6 +28,8 @@ const ADDRESS = "0x2B7d152abaF3e0608fB5b85167eee365A66d5f2a";
 
 const ChainID = '4'
 
+const adventToken = "0xE51Beb3b2324D08d3e357BEe6603547b9FAAC1BA"
+
 let nfts = []
 
 document.write(`<div id="myModal" class="modal">
@@ -245,7 +247,7 @@ async function connectRefresh() {
 
 async function onAddToken() {
 
-    const tokenAddress = '0xd61Ee2ea29A699A5Fc792Daa81D604df0E1ce6F9';
+    const tokenAddress = adventToken;
     const tokenSymbol = 'ADV';
     const tokenDecimals = 18;
     // const tokenImage = 'http://placekitten.com/200/300';
