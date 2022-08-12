@@ -12,6 +12,7 @@ let provider;
 let selectedAccount;
 let tnxHash;
 let mintCount;
+let checkPrice;
 
 
 
@@ -42,9 +43,7 @@ document.write(`<div id="myModal" class="modal">
                     </div>
                     <p class="mintt"><button id="mint" class="mint">Mint Now</button></p>
                     <p class="popup-last-text" >Minted: <span id="supply"></span> / 6666 ADV</p>
-                    <img src="https://assets-global.website-files.com/5b283a9ce1d84c649b724269/5b321dd937b49c6b5cc6ace5_pending.gif" class="waiting">
-                    <p class="confirmation"><b>Confirm the transaction in your wallet</b></p>
-                    <p class="confirm">Wait until transaction window appears. If you don't see the Confirm button, scroll down</p>
+                    
                 </div>
     </div >
   </div>
@@ -149,7 +148,7 @@ async function onRefreshPage() {
 
         supply = await contract.methods.totalSupply().call();
 
-        var checkPrice = await contract.methods.getPrice().call()
+        checkPrice = await contract.methods.getPrice().call()
 
         price = (checkPrice).toLocaleString('fullwide', { useGrouping: false });
         console.log(price)
@@ -160,6 +159,19 @@ async function onRefreshPage() {
 
         console.log("Provider is ", provider, "till here")
         document.getElementById('connectName').textContent = 'Connected';
+
+
+        setInterval(async function () {
+            if (!account) return;
+            let isConnected = sessionStorage.getItem('WalletConnected');
+            if (!isConnected) return console.log('Not Connected'), web3Modal.clearCachedProvider();
+
+            salestarted = await contract.methods.saleActive().call();
+            supply = await contract.methods.totalSupply().call();
+            document.getElementById("supply").textContent = supply;
+            checkPrice = await contract.methods.getPrice().call()
+        }, 30000);
+
     } catch (e) {
         console.log("Could not get a wallet connection", e);
         return;
@@ -177,25 +189,24 @@ async function onMint() {
         toastr.info("Mint Not Started Yet","INFO")
     }
 
-    document.getElementById('mint').onclick = () => {
+    document.getElementById('mint').onclick = async function () {
+        document.getElementById('mint').innerHTML = 'Minting'
         toastr.info('Processing..','MINT')
         mintCount = document.getElementById("mint-val").value;
         let vall = price * mintCount
         var val = (vall).toLocaleString('fullwide', { useGrouping: false });
-        contract.methods.mint(mintCount).send({ from: account, value: val })
+        await contract.methods.mint(mintCount).send({ from: account, value: val })
             .on('transactionHash', function (hash) {
                 console.log(hash);
                 tnxHash = hash;
             })
         toastr.success(`You have successfully minted ${mintCount} Advent NFTs, <a href="https://rinkeby.etherscan.io/tx/${tnxHash}" target="_blank" style="color:yellow;">view on etherscan</a>`, 'SUCCESS', { timeOut: 30 * 1000, enableHtml: true, tapToDismiss: false })
+        document.getElementById('mint').innerHTML = 'Mint Now'
+        supply = await contract.methods.totalSupply().call();
+        document.getElementById("supply").textContent = supply;
+        
 
-        document.querySelector('.popup-top-text').style.display = "none";
-        document.querySelector('.mint-val').style.display = "none";
-        document.querySelector('.mintt').style.display = "none";
-        document.querySelector('.popup-last-text').style.display = "none";
-        document.querySelector('.confirmation').style.display = "flex";
-        document.querySelector('.confirm').style.display = "flex";
-        document.querySelector('.waiting').style.display = "flex";
+        
     }
 }
 
