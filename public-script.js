@@ -20,6 +20,7 @@ const ABI = [{ "inputs": [{ "internalType": "string", "name": "_uri", "type": "s
 
 const ADDRESS = "0x1f8752C327466E048d30F88038ED9331008E5eB9";
 
+console.log(ADDRESS)
 const ChainID = '4'
 
 document.write(`<div id="myModal" class="modal">
