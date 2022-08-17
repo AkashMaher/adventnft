@@ -336,9 +336,12 @@ async function onMint() {
 
         mintCount = document.getElementById("mint-val").value;
         if (currentTime >Allowtime){
-
+            
             let mintednfts = await contract.methods.Max_Minted(account).call()
+
             if (mintednfts == 3) return toastr.error("You have reached maximum mint limit", "ERROR");
+            if (mintCount + mintednfts > 3) return toastr.error(`You can only mint ${3 - mintednfts} more`, "ERROR");
+            
             console.log(Date.now()/1000)
             console.log(parseInt(Allowtime))
             vall = price * mintCount
@@ -357,7 +360,9 @@ async function onMint() {
         } else if (currentTime > wltime){
 
             let mintednfts = await contract.methods.Max_Minted(account).call()
+            
             if (mintednfts == 3) return toastr.error("You have reached maximum mint limit", "ERROR");
+            if (mintCount + mintednfts > 3) return toastr.error(`You can only mint ${3-mintednfts} more`, "ERROR");
             console.log(Date.now() / 1000)
             console.log(parseInt(wltime))
             vall = wl_price * mintCount
