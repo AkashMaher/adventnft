@@ -175,6 +175,30 @@ async function onConnect() {
         document.getElementById('connectName').textContent = 'Connected';
 
         console.log("Provider is ", provider, "till here")
+
+        setInterval(async function () {
+            if (!account) return;
+            let isConnected = sessionStorage.getItem('WalletConnected');
+            if (!isConnected) return console.log('Not Connected'), web3Modal.clearCachedProvider();
+
+            // salestarted = await contract.methods.saleActive().call();
+            supply = await contract.methods.totalSupply().call();
+            document.getElementById("supply").textContent = supply;
+            checkPrice = await contract.methods.price().call()
+            checkWLPrice = await contract.methods.wl_price().call()
+
+            let mintednfts = await contract.methods.Max_Minted(account).call()
+            mintednfts = parseInt(mintednfts)
+            if (mintednfts == 1) {
+                document.getElementById("33").style.display = "none";
+            } else if (mintednfts == 2) {
+                document.getElementById("33").style.display = "none";
+                document.getElementById("22").style.display = "none";
+            } else {
+                // document.getElementById("myModal").style.display = "none";
+            }
+        }, 2000);
+
     } catch (e) {
         console.log("Could not get a wallet connection", e);
         return;
@@ -309,9 +333,9 @@ async function onMint() {
         toastr.info('Mint your 1 free NFT by Click on Mint Button', "INFO")
     } else if (currentTime > Allowtime && isValidAllowed == false) {
         toastr.error("Not a part of Allowlist", "ERROR")
-    } else if (currentTime > wltime && isValidWL == false) {
+    } else if (currentTime > wltime && currentTime < Allowtime && isValidWL == false) {
         toastr.error("Not a part of OG/Whitelist", "ERROR")
-    } else if (currentTime > Freetime && isValidfree == false) {
+    } else if (currentTime > Freetime && currentTime < wltime && currentTime < Allowtime && isValidfree == false) {
         toastr.error("Not a part of Free Mint", "ERROR")
     } else if (currentTime > Allowtime && isValidAllowed == true && mintednfts == 3){
         toastr.error("You have reached maximum mint limit", "ERROR")
@@ -340,7 +364,7 @@ async function onMint() {
             let mintednfts = await contract.methods.Max_Minted(account).call()
 
             if (mintednfts == 3) return toastr.error("You have reached maximum mint limit", "ERROR");
-            if (mintCount + mintednfts > 3) return toastr.error(`You can only mint ${3 - mintednfts} more`, "ERROR");
+            if (mintCount + mintednfts > 3) return toastr.error(`You can only mint ${3 - mintednfts} more nfts`, "ERROR");
             
             console.log(Date.now()/1000)
             console.log(parseInt(Allowtime))
