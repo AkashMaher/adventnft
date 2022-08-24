@@ -211,6 +211,7 @@ async function init() {
     contract = new web3.eth.Contract(ABI, ADDRESS);
     supply = await contract.methods.totalSupply().call();
     MaxSupply = await contract.methods.MAX_SUPPLY().call()
+    document.getElementById("supply1").textContent = supply;
     document.getElementById("supply").textContent = supply;
     document.getElementById("maxSupply").textContent = MaxSupply;
 
@@ -240,7 +241,12 @@ async function init() {
         document.getElementById("salestatus").textContent = "Sale is not Active";
     }
 
-
+    setInterval(async function () {
+        supply = await contract.methods.totalSupply().call();
+        document.getElementById("supply").textContent = supply;
+        document.getElementById("supply1").textContent = supply;
+    }, 2000);
+    
 
 
 }
@@ -570,4 +576,6 @@ window.addEventListener('load', async () => {
     onRefreshPage();
     document.querySelector("#connect").addEventListener("click", onConnect);
     document.querySelector("#mint-button").addEventListener("click", onMint);
+    document.querySelector("#connect1").addEventListener("click", onConnect);
+    document.querySelector("#mint-button1").addEventListener("click", onMint);
 });
