@@ -105,6 +105,7 @@ async function walletConnect() {
     document.getElementById("supply").textContent = supply;
     sessionStorage.setItem('WalletConnected', true);
     document.getElementById('connectName').textContent = 'Connected';
+    document.getElementById('connectName1').textContent = 'Connected';
 
     console.log("Provider is ", provider, "till here")
 
@@ -165,6 +166,7 @@ async function metamaskWallet() {
     document.getElementById("supply").textContent = supply;
     sessionStorage.setItem('WalletConnected', true);
     document.getElementById('connectName').textContent = 'Connected';
+    document.getElementById('connectName1').textContent = 'Connected';
 
     console.log("Provider is ", provider, "till here")
 
@@ -346,6 +348,7 @@ async function onConnect() {
         document.getElementById("supply").textContent = supply;
         sessionStorage.setItem('WalletConnected', true);
         document.getElementById('connectName').textContent = 'Connected';
+        document.getElementById('connectName1').textContent = 'Connected';
 
         console.log("Provider is ", provider, "till here")
 
@@ -421,6 +424,7 @@ async function onRefreshPage() {
 
         console.log("Provider is ", provider, "till here")
         document.getElementById('connectName').textContent = 'Connected';
+        document.getElementById('connectName1').textContent = 'Connected';
 
 
         setInterval(async function () {
