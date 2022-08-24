@@ -33,7 +33,7 @@ document.write(`<div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close" id="closer">&times;</span>
     <div class="popup">
                 <div class = "popup-content" >
                 
@@ -55,7 +55,7 @@ document.write(`<div id="myModal" class="modal">
 </div>
 <div>`)
 $(document).ready(function () {
-    document.querySelector('.close').addEventListener('click', function () {
+    document.querySelector('#closer').addEventListener('click', function () {
         document.getElementById("myModal").style.display = "none";
     });
 });
