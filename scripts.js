@@ -393,6 +393,32 @@ async function onRefreshPage() {
     console.log(isConnected)
     if (!isConnected) return console.log('Not Connected'), web3Modal.clearCachedProvider();
 
+    let userAgentString =
+        navigator.userAgent;
+
+    // Detect Chrome
+    let chromeAgent =
+        userAgentString.indexOf("Chrome") > -1;
+
+
+    // Detect Opera
+    let operaAgent =
+        userAgentString.indexOf("OP") > -1;
+
+    // Discard Chrome since it also matches Opera     
+    if ((chromeAgent) && (operaAgent))
+        chromeAgent = false;
+
+    console.log(operaAgent)
+    console.log(chromeAgent)
+    console.log(window.ethereum)
+
+    if (operaAgent == true && window.ethereum) {
+        metamaskWallet()
+    } else if (operaAgent == true && !window.ethereum) {
+        walletConnect()
+    }
+    else {
     console.log("Opening a dialog", web3Modal);
     try {
         provider = await web3Modal.connect();
@@ -454,7 +480,7 @@ async function onRefreshPage() {
         console.log("Could not get a wallet connection", e);
         return;
     }
-
+    }
 }
 
 async function onMint() {
