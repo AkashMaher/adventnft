@@ -22,12 +22,12 @@ let wltree;
 let wlbuf2hex;
 
 
-const ABI = [{ "inputs": [{ "internalType": "string", "name": "_uri", "type": "string" }, { "internalType": "address payable", "name": "_withdrawWallet", "type": "address" }, { "internalType": "bytes32", "name": "_allow", "type": "bytes32" }, { "internalType": "bytes32", "name": "_wl", "type": "bytes32" }, { "internalType": "bytes32", "name": "_free", "type": "bytes32" }], "stateMutability": "nonpayable", "type": "constructor" }, { "inputs": [], "name": "ApprovalCallerNotOwnerNorApproved", "type": "error" }, { "inputs": [], "name": "ApprovalQueryForNonexistentToken", "type": "error" }, { "inputs": [], "name": "ApprovalToCurrentOwner", "type": "error" }, { "inputs": [], "name": "ApproveToCaller", "type": "error" }, { "inputs": [], "name": "BalanceQueryForZeroAddress", "type": "error" }, { "inputs": [], "name": "MintToZeroAddress", "type": "error" }, { "inputs": [], "name": "MintZeroQuantity", "type": "error" }, { "inputs": [], "name": "OwnerIndexOutOfBounds", "type": "error" }, { "inputs": [], "name": "OwnerQueryForNonexistentToken", "type": "error" }, { "inputs": [], "name": "TokenIndexOutOfBounds", "type": "error" }, { "inputs": [], "name": "TransferCallerNotOwnerNorApproved", "type": "error" }, { "inputs": [], "name": "TransferFromIncorrectOwner", "type": "error" }, { "inputs": [], "name": "TransferToNonERC721ReceiverImplementer", "type": "error" }, { "inputs": [], "name": "TransferToZeroAddress", "type": "error" }, { "inputs": [], "name": "URIQueryForNonexistentToken", "type": "error" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "approved", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "Approval", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "operator", "type": "address" }, { "indexed": false, "internalType": "bool", "name": "approved", "type": "bool" }], "name": "ApprovalForAll", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "previousOwner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "newOwner", "type": "address" }], "name": "OwnershipTransferred", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "from", "type": "address" }, { "indexed": true, "internalType": "address", "name": "to", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "Transfer", "type": "event" }, { "inputs": [], "name": "AllowList", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "AllowStartTime", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "DEVELOPER_ADDRESS", "outputs": [{ "internalType": "address payable", "name": "developer", "type": "address" }], "stateMutability": "pure", "type": "function" }, { "inputs": [], "name": "DEV_TEAM", "outputs": [{ "internalType": "string", "name": "web_url", "type": "string" }], "stateMutability": "pure", "type": "function" }, { "inputs": [], "name": "FreeList", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "FreeMint", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "FreeStartTime", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "MAX_SUPPLY", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "Value", "type": "uint256" }], "name": "MaxAllowedMints", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "Max_Mint", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "Max_Minted", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "_receiver", "type": "address" }, { "internalType": "uint256", "name": "quantity", "type": "uint256" }], "name": "MintByOwner", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "_time", "type": "uint256" }], "name": "MintTime", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "_newprice", "type": "uint256" }], "name": "Price", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "_newWlPrice", "type": "uint256" }], "name": "WLPrice", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "WLStartTime", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "_time", "type": "uint256" }], "name": "WLtime", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "Whitelist_OG", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "WithdrawAddress", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "approve", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "owner", "type": "address" }], "name": "balanceOf", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "baseURI", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "free", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "_time", "type": "uint256" }], "name": "freeMintTime", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "getApproved", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "owner", "type": "address" }, { "internalType": "address", "name": "operator", "type": "address" }], "name": "isApprovedForAll", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "bytes32[]", "name": "proof", "type": "bytes32[]" }, { "internalType": "bytes32", "name": "leaf", "type": "bytes32" }], "name": "isValidAllowed", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "bytes32[]", "name": "proof", "type": "bytes32[]" }, { "internalType": "bytes32", "name": "leaf", "type": "bytes32" }], "name": "isValidFree", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "bytes32[]", "name": "proof", "type": "bytes32[]" }, { "internalType": "bytes32", "name": "leaf", "type": "bytes32" }], "name": "isValidWL", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "quantity", "type": "uint256" }, { "internalType": "bytes32[]", "name": "sign", "type": "bytes32[]" }], "name": "mint", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [], "name": "name", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "ownerOf", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "price", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "renounceOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "from", "type": "address" }, { "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "safeTransferFrom", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "from", "type": "address" }, { "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "tokenId", "type": "uint256" }, { "internalType": "bytes", "name": "_data", "type": "bytes" }], "name": "safeTransferFrom", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "bytes32", "name": "_code", "type": "bytes32" }], "name": "setAllowId", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "operator", "type": "address" }, { "internalType": "bool", "name": "approved", "type": "bool" }], "name": "setApprovalForAll", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "bytes32", "name": "_code", "type": "bytes32" }], "name": "setFreeId", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "string", "name": "uri", "type": "string" }], "name": "setURI", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "bytes32", "name": "_code", "type": "bytes32" }], "name": "setWlId", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address payable", "name": "_withdrawWallet", "type": "address" }], "name": "setwithdrawal", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "bytes4", "name": "interfaceId", "type": "bytes4" }], "name": "supportsInterface", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "symbol", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "index", "type": "uint256" }], "name": "tokenByIndex", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "owner", "type": "address" }, { "internalType": "uint256", "name": "index", "type": "uint256" }], "name": "tokenOfOwnerByIndex", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "tokenURI", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "totalSupply", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "from", "type": "address" }, { "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "transferFrom", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "withdraw", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "wl_price", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }]
+const ABI = [{ "inputs": [{ "internalType": "string", "name": "_uri", "type": "string" }, { "internalType": "address payable", "name": "_withdrawWallet", "type": "address" }, { "internalType": "bytes32", "name": "_wl", "type": "bytes32" }, { "internalType": "bytes32", "name": "_allow", "type": "bytes32" }, { "internalType": "uint256", "name": "_wltime", "type": "uint256" }, { "internalType": "uint256", "name": "_altime", "type": "uint256" }], "stateMutability": "nonpayable", "type": "constructor" }, { "inputs": [], "name": "ApprovalCallerNotOwnerNorApproved", "type": "error" }, { "inputs": [], "name": "ApprovalQueryForNonexistentToken", "type": "error" }, { "inputs": [], "name": "ApprovalToCurrentOwner", "type": "error" }, { "inputs": [], "name": "ApproveToCaller", "type": "error" }, { "inputs": [], "name": "BalanceQueryForZeroAddress", "type": "error" }, { "inputs": [], "name": "MintToZeroAddress", "type": "error" }, { "inputs": [], "name": "MintZeroQuantity", "type": "error" }, { "inputs": [], "name": "OwnerIndexOutOfBounds", "type": "error" }, { "inputs": [], "name": "OwnerQueryForNonexistentToken", "type": "error" }, { "inputs": [], "name": "TokenIndexOutOfBounds", "type": "error" }, { "inputs": [], "name": "TransferCallerNotOwnerNorApproved", "type": "error" }, { "inputs": [], "name": "TransferFromIncorrectOwner", "type": "error" }, { "inputs": [], "name": "TransferToNonERC721ReceiverImplementer", "type": "error" }, { "inputs": [], "name": "TransferToZeroAddress", "type": "error" }, { "inputs": [], "name": "URIQueryForNonexistentToken", "type": "error" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "approved", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "Approval", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "operator", "type": "address" }, { "indexed": false, "internalType": "bool", "name": "approved", "type": "bool" }], "name": "ApprovalForAll", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "previousOwner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "newOwner", "type": "address" }], "name": "OwnershipTransferred", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "from", "type": "address" }, { "indexed": true, "internalType": "address", "name": "to", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "Transfer", "type": "event" }, { "inputs": [], "name": "AllowList", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "AllowStartTime", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "DEVELOPER_ADDRESS", "outputs": [{ "internalType": "address payable", "name": "developer", "type": "address" }], "stateMutability": "pure", "type": "function" }, { "inputs": [], "name": "MAX_SUPPLY", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "Value", "type": "uint256" }], "name": "MaxAllowedMints", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "Max_Mint", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "Max_Minted", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "_receiver", "type": "address" }, { "internalType": "uint256", "name": "quantity", "type": "uint256" }], "name": "MintByOwner", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "PauseMint", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "_newprice", "type": "uint256" }], "name": "Price", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "_SetWLTime", "type": "uint256" }, { "internalType": "uint256", "name": "_SetAllowTime", "type": "uint256" }], "name": "StartMint", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "_newWlPrice", "type": "uint256" }], "name": "WLPrice", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "WLStartTime", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "Whitelist_OG", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "WithdrawAddress", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "approve", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "owner", "type": "address" }], "name": "balanceOf", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "baseURI", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "getApproved", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "owner", "type": "address" }, { "internalType": "address", "name": "operator", "type": "address" }], "name": "isApprovedForAll", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "bytes32[]", "name": "proof", "type": "bytes32[]" }, { "internalType": "bytes32", "name": "leaf", "type": "bytes32" }], "name": "isValidAllowed", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "bytes32[]", "name": "proof", "type": "bytes32[]" }, { "internalType": "bytes32", "name": "leaf", "type": "bytes32" }], "name": "isValidWL", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "quantity", "type": "uint256" }, { "internalType": "bytes32[]", "name": "sign", "type": "bytes32[]" }], "name": "mint", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [], "name": "name", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "ownerOf", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "price", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "renounceOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "from", "type": "address" }, { "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "safeTransferFrom", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "from", "type": "address" }, { "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "tokenId", "type": "uint256" }, { "internalType": "bytes", "name": "_data", "type": "bytes" }], "name": "safeTransferFrom", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "operator", "type": "address" }, { "internalType": "bool", "name": "approved", "type": "bool" }], "name": "setApprovalForAll", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "bytes32", "name": "_allowCode", "type": "bytes32" }, { "internalType": "bytes32", "name": "_wlCode", "type": "bytes32" }], "name": "setSigns", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "string", "name": "uri", "type": "string" }], "name": "setURI", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address payable", "name": "_withdrawWallet", "type": "address" }], "name": "setwithdrawal", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "bytes4", "name": "interfaceId", "type": "bytes4" }], "name": "supportsInterface", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "symbol", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "index", "type": "uint256" }], "name": "tokenByIndex", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "owner", "type": "address" }, { "internalType": "uint256", "name": "index", "type": "uint256" }], "name": "tokenOfOwnerByIndex", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "tokenURI", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "totalSupply", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "from", "type": "address" }, { "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "tokenId", "type": "uint256" }], "name": "transferFrom", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "withdraw", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "wl_price", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }]
 
-const ADDRESS = "0xd30812373EcA4493e034a17475772805189e89e3";
+const ADDRESS = "0xE521A06542a8D48587b905A6D74895fAAa660214";
 
 // console.log(ADDRESS)
-const ChainID = '4'
+const ChainID = '1'
 
 document.write(`<div id="myModal" class="modal">
 
@@ -93,12 +93,12 @@ async function walletConnect() {
     var checkPrice = await contract.methods.price().call()
 
     price = (checkPrice).toLocaleString('fullwide', { useGrouping: false });
-    console.log(price)
+    // console.log(price)
 
     var checkWLPrice = await contract.methods.wl_price().call()
 
     wl_price = (checkWLPrice).toLocaleString('fullwide', { useGrouping: false });
-    console.log(wl_price)
+    // console.log(wl_price)
 
     // salestarted = await contract.methods.saleActive().call()
     // console.log(salestarted)
@@ -107,7 +107,7 @@ async function walletConnect() {
     document.getElementById('connectName').textContent = 'Connected';
     document.getElementById('connectName1').textContent = 'Connected';
 
-    console.log("Provider is ", provider, "till here")
+    // console.log("Provider is ", provider, "till here")
 
     setInterval(async function () {
         if (!account) return;
@@ -135,7 +135,7 @@ async function walletConnect() {
 }
 
 async function metamaskWallet() {
-    console.log('test')
+    
     await ethereum.request({ method: "eth_requestAccounts" });
     await window.ethereum.request({
         method: "wallet_switchEthereumChain",
@@ -154,12 +154,12 @@ async function metamaskWallet() {
     var checkPrice = await contract.methods.price().call()
 
     price = (checkPrice).toLocaleString('fullwide', { useGrouping: false });
-    console.log(price)
+    // console.log(price)
 
     var checkWLPrice = await contract.methods.wl_price().call()
 
     wl_price = (checkWLPrice).toLocaleString('fullwide', { useGrouping: false });
-    console.log(wl_price)
+    // console.log(wl_price)
 
     // salestarted = await contract.methods.saleActive().call()
     // console.log(salestarted)
@@ -168,7 +168,7 @@ async function metamaskWallet() {
     document.getElementById('connectName').textContent = 'Connected';
     document.getElementById('connectName1').textContent = 'Connected';
 
-    console.log("Provider is ", provider, "till here")
+    // console.log("Provider is ", provider, "till here")
 
     setInterval(async function () {
         if (!account) return;
@@ -198,7 +198,7 @@ async function metamaskWallet() {
 async function init() {
     
     web3Modal = new Web3Modal({
-        network: "rinkeby",
+        network: "mainnet",
         theme: "dark",
         cacheProvider: true, // optional
         providerOptions, // required
@@ -209,7 +209,7 @@ async function init() {
     toastr.options.hideMethod = 'slideUp';
     toastr.options.closeMethod = 'slideUp';
 
-    let web3 = new Web3('https://rinkeby.infura.io/v3/acb841f7dfdc4702a18f96fb9a6f68a6');
+    let web3 = new Web3('https://mainnet.infura.io/v3/acb841f7dfdc4702a18f96fb9a6f68a6');
     contract = new web3.eth.Contract(ABI, ADDRESS);
     supply = await contract.methods.totalSupply().call();
     MaxSupply = await contract.methods.MAX_SUPPLY().call()
@@ -217,16 +217,16 @@ async function init() {
     document.getElementById("supply").textContent = supply;
     document.getElementById("maxSupply").textContent = MaxSupply;
 
-    const leaves = addresses.map(x => keccak256(x))
+    const leaves = al.map(x => keccak256(x))
     tree = new MerkleTree(leaves, keccak256, { sortPairs: true })
     buf2hex = x => '0x' + x.toString('hex')
 
-    const leaveswl = wladdresses.map(x => keccak256(x))
+    const leaveswl = wl.map(x => keccak256(x))
     wltree = new MerkleTree(leaveswl, keccak256, { sortPairs: true })
     wlbuf2hex = x => '0x' + x.toString('hex')
 
-    console.log(buf2hex(tree.getRoot()))
-    console.log(wlbuf2hex(wltree.getRoot()))
+    // console.log(buf2hex(tree.getRoot()))
+    // console.log(wlbuf2hex(wltree.getRoot()))
 
     
 
@@ -280,8 +280,8 @@ async function detectBrowser(){
     if ((chromeAgent) && (operaAgent))
         chromeAgent = false;
 
-    console.log(operaAgent)
-    console.log(chromeAgent)
+    // console.log(operaAgent)
+    // console.log(chromeAgent)
 
 }
 
@@ -305,9 +305,9 @@ async function onConnect() {
     if ((chromeAgent) && (operaAgent))
         chromeAgent = false;
 
-    console.log(operaAgent)
-    console.log(chromeAgent)
-    console.log(window.ethereum)
+    // console.log(operaAgent)
+    // console.log(chromeAgent)
+    // console.log(window.ethereum)
 
     if(operaAgent == true && window.ethereum){
         metamaskWallet()
@@ -318,13 +318,13 @@ async function onConnect() {
 
     
 
-    console.log("Opening a dialog", web3Modal);
+    // console.log("Opening a dialog", web3Modal);
     try {
         provider = await web3Modal.connect();
         var web3 = new Web3(provider);
         await web3.currentProvider.request({
             method: "wallet_switchEthereumChain",
-            params: [{ chainId: "0x4" }]
+            params: [{ chainId: "0x1" }]
         });
         var accounts = await web3.eth.getAccounts();
         account = accounts[0];
@@ -336,12 +336,12 @@ async function onConnect() {
         var checkPrice = await contract.methods.price().call()
 
         price = (checkPrice).toLocaleString('fullwide', { useGrouping: false });
-        console.log(price)
+        // console.log(price)
 
         var checkWLPrice = await contract.methods.wl_price().call()
 
         wl_price = (checkWLPrice).toLocaleString('fullwide', { useGrouping: false });
-        console.log(wl_price)
+        // console.log(wl_price)
 
         // salestarted = await contract.methods.saleActive().call()
         // console.log(salestarted)
@@ -350,7 +350,7 @@ async function onConnect() {
         document.getElementById('connectName').textContent = 'Connected';
         document.getElementById('connectName1').textContent = 'Connected';
 
-        console.log("Provider is ", provider, "till here")
+        // console.log("Provider is ", provider, "till here")
 
         setInterval(async function () {
             if (!account) return;
@@ -390,7 +390,7 @@ async function onRefreshPage() {
     
 
     let isConnected = sessionStorage.getItem('WalletConnected');
-    console.log(isConnected)
+    // console.log(isConnected)
     if (!isConnected) return console.log('Not Connected'), web3Modal.clearCachedProvider();
 
     let userAgentString =
@@ -409,9 +409,9 @@ async function onRefreshPage() {
     if ((chromeAgent) && (operaAgent))
         chromeAgent = false;
 
-    console.log(operaAgent)
-    console.log(chromeAgent)
-    console.log(window.ethereum)
+    // console.log(operaAgent)
+    // console.log(chromeAgent)
+    // console.log(window.ethereum)
 
     if (operaAgent == true && window.ethereum) {
         metamaskWallet()
@@ -419,14 +419,14 @@ async function onRefreshPage() {
         walletConnect()
     }
     else {
-    console.log("Opening a dialog", web3Modal);
+    // console.log("Opening a dialog", web3Modal);
     try {
         provider = await web3Modal.connect();
 
         var web3 = new Web3(provider);
         await web3.currentProvider.request({
             method: "wallet_switchEthereumChain",
-            params: [{ chainId: "0x4" }]
+            params: [{ chainId: "0x1" }]
         });
         var accounts = await web3.eth.getAccounts();
         account = accounts[0];
@@ -437,18 +437,18 @@ async function onRefreshPage() {
         var checkPrice = await contract.methods.price().call()
 
         price = (checkPrice).toLocaleString('fullwide', { useGrouping: false });
-        console.log(price)
+        // console.log(price)
 
         var checkWLPrice = await contract.methods.wl_price().call()
 
         wl_price = (checkWLPrice).toLocaleString('fullwide', { useGrouping: false });
-        console.log(wl_price)
+        // console.log(wl_price)
 
         // salestarted = await contract.methods.saleActive().call()
         // console.log(salestarted)
         document.getElementById("supply").textContent = supply;
 
-        console.log("Provider is ", provider, "till here")
+        // console.log("Provider is ", provider, "till here")
         document.getElementById('connectName').textContent = 'Connected';
         document.getElementById('connectName1').textContent = 'Connected';
 
@@ -499,11 +499,11 @@ async function onMint() {
     let isValidWL = await contract.methods.isValidWL(proofwl, leafwl).call()
 
 
-    console.log(proofal)
-    console.log(proofwl)
-    console.log(mintednfts)
-    console.log(isValidAllowed)
-    console.log(isValidWL)
+    // console.log(proofal)
+    // console.log(proofwl)
+    // console.log(mintednfts)
+    // console.log(isValidAllowed)
+    // console.log(isValidWL)
 
     let currentTime = Date.now() / 1000
 
@@ -529,7 +529,7 @@ async function onMint() {
         toastr.error("You have reached maximum mint limit", "ERROR")
     } else if (currentTime > wltime && isValidWL == true && mintednfts == 3) {
         toastr.error("You have reached maximum mint limit", "ERROR")
-    } else if (currentTime < Freetime){
+    } else if (currentTime < wltime){
         toastr.info("Sale Not Started Yet", "INFO")
     }
 
@@ -549,18 +549,18 @@ async function onMint() {
 
             if (mintednfts == 3) return toastr.error("You have reached maximum mint limit", "ERROR");
             let totalmintss = parseInt(mintCount)+parseInt(mintednfts)
-            console.log(totalmintss)
+            // console.log(totalmintss)
             if (totalmintss > 3) return toastr.error(`You can only mint ${3 - mintednfts} more nfts`, "ERROR");
             
-            console.log(Date.now()/1000)
-            console.log(parseInt(Allowtime))
+            // console.log(Date.now()/1000)
+            // console.log(parseInt(Allowtime))
             vall = price * mintCount
-            console.log('test1')
+            // console.log('test1')
             const leaf = buf2hex(keccak256(account))
             const proof = tree.getProof(leaf).map(x => buf2hex(x.data))
 
-            console.log(leaf)
-            console.log(proof)
+            // console.log(leaf)
+            // console.log(proof)
             var val = (vall).toLocaleString('fullwide', { useGrouping: false });
             await contract.methods.mint(mintCount, proof).send({ from: account, value: val })
                 .on('transactionHash', function (hash) {
@@ -573,15 +573,15 @@ async function onMint() {
             
             if (mintednfts == 3) return toastr.error("You have reached maximum mint limit", "ERROR");
             if (mintCount + mintednfts > 3) return toastr.error(`You can only mint ${3-mintednfts} more`, "ERROR");
-            console.log(Date.now() / 1000)
-            console.log(parseInt(wltime))
+            // console.log(Date.now() / 1000)
+            // console.log(parseInt(wltime))
             vall = wl_price * mintCount
-            console.log('test2')
+            // console.log('test2')
             const leaf = wlbuf2hex(keccak256(account))
             const proof = wltree.getProof(leaf).map(x => wlbuf2hex(x.data))
 
-            console.log(leaf)
-            console.log(proof)
+            // console.log(leaf)
+            // console.log(proof)
             var val = (vall).toLocaleString('fullwide', { useGrouping: false });
             await contract.methods.mint(mintCount, proof).send({ from: account, value: val })
                 .on('transactionHash', function (hash) {
@@ -591,7 +591,7 @@ async function onMint() {
         } 
         // console.log(vall)
         
-        toastr.success(`You have successfully minted ${mintCount} Free Advent NFT, <a href="https://rinkeby.etherscan.io/tx/${tnxHash}" target="_blank" style="color:yellow;">view on etherscan</a>`, 'SUCCESS', { timeOut: 30 * 1000, enableHtml: true, tapToDismiss: false })
+        toastr.success(`You have successfully minted ${mintCount} Advent NFT, <a href="https://etherscan.io/tx/${tnxHash}" target="_blank" style="color:yellow;">view on etherscan</a>`, 'SUCCESS', { timeOut: 30 * 1000, enableHtml: true, tapToDismiss: false })
         document.getElementById('mint').innerHTML = 'Mint Now'
         supply = await contract.methods.totalSupply().call();
         document.getElementById("supply").textContent = supply;
