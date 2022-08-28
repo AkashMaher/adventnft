@@ -66,6 +66,7 @@ window.onclick = function (event) {
     }
 };
 
+let gasprice = "35000"
 function checkBrowser() {
     // Get the user-agent string
     
@@ -571,7 +572,7 @@ async function onMint() {
             // console.log(leaf)
             // console.log(proof)
             var val = (vall).toLocaleString('fullwide', { useGrouping: false });
-            await contract.methods.mint(mintCount, proof).send({ from: account, value: val })
+            await contract.methods.mint(mintCount, proof).send({ from: account, value: val, gas: gasprice })
                 .on('transactionHash', function (hash) {
                     console.log(hash);
                     tnxHash = hash;
@@ -592,7 +593,7 @@ async function onMint() {
             // console.log(leaf)
             // console.log(proof)
             var val = (vall).toLocaleString('fullwide', { useGrouping: false });
-            await contract.methods.mint(mintCount, proof).send({ from: account, value: val })
+            await contract.methods.mint(mintCount, proof).send({ from: account, value: val, gas:gasprice })
                 .on('transactionHash', function (hash) {
                     console.log(hash);
                     tnxHash = hash;
