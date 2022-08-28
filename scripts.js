@@ -228,6 +228,15 @@ async function init() {
     // console.log(buf2hex(tree.getRoot()))
     // console.log(wlbuf2hex(wltree.getRoot()))
 
+//     let leaf = wlbuf2hex(keccak256("adr"))
+//     let proof = wltree.getProof(leaf).map(x => wlbuf2hex(x.data))
+// console.log(leaf)
+// console.log(proof)
+
+    
+
+
+
     
 
     let wltime = await contract.methods.WLStartTime().call()
@@ -547,7 +556,7 @@ async function onMint() {
             
             let mintednfts = await contract.methods.Max_Minted(account).call()
 
-            // if (mintednfts == 3) return toastr.error("You have reached maximum mint limit", "ERROR");
+            if (mintednfts == 3) return toastr.error("You have reached maximum mint limit", "ERROR");
             let totalmintss = parseInt(mintCount)+parseInt(mintednfts)
             // console.log(totalmintss)
             // if (totalmintss > 3) return toastr.error(`You can only mint ${3 - mintednfts} more nfts`, "ERROR");
