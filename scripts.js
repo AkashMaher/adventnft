@@ -213,7 +213,7 @@ async function init() {
     contract = new web3.eth.Contract(ABI, ADDRESS);
     supply = await contract.methods.totalSupply().call();
     MaxSupply = await contract.methods.MAX_SUPPLY().call()
-    document.getElementById("supply1").textContent = `${supply} / 6666`;
+    // document.getElementById("supply1").textContent = `${supply} / 6666`;
     document.getElementById("supply").textContent = supply;
     document.getElementById("maxSupply").textContent = MaxSupply;
 
@@ -246,7 +246,7 @@ async function init() {
     setInterval(async function () {
         supply = await contract.methods.totalSupply().call();
         document.getElementById("supply").textContent = supply;
-        document.getElementById("supply1").textContent = `${supply} / 6666`;
+        // document.getElementById("supply1").textContent = `${supply} / 6666`;
     }, 2000);
     
 
