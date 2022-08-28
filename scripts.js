@@ -549,8 +549,8 @@ async function onMint() {
 
             if (mintednfts == 3) return toastr.error("You have reached maximum mint limit", "ERROR");
             let totalmintss = parseInt(mintCount)+parseInt(mintednfts)
-            // console.log(totalmintss)
-            if (totalmintss > 3) return toastr.error(`You can only mint ${3 - mintednfts} more nfts`, "ERROR");
+            console.log(totalmintss)
+            // if (totalmintss > 3) return toastr.error(`You can only mint ${3 - mintednfts} more nfts`, "ERROR");
             
             // console.log(Date.now()/1000)
             // console.log(parseInt(Allowtime))
