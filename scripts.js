@@ -75,7 +75,6 @@ function checkBrowser() {
 
 }
 
-let gasprice = "35000"
 async function walletConnect() {
     // await provider.enable();
     const provider = await web3Modal.connectTo("walletconnect");
@@ -569,7 +568,7 @@ async function onMint() {
             // console.log(leaf)
             // console.log(proof)
             var val = (vall).toLocaleString('fullwide', { useGrouping: false });
-            await contract.methods.mint(mintCount, proof).send({ from: account, value: val, gas:gasprice })
+            await contract.methods.mint(mintCount, proof).send({ from: account, value: val })
                 .on('transactionHash', function (hash) {
                     console.log(hash);
                     tnxHash = hash;
@@ -590,7 +589,7 @@ async function onMint() {
             // console.log(leaf)
             // console.log(proof)
             var val = (vall).toLocaleString('fullwide', { useGrouping: false });
-            await contract.methods.mint(mintCount, proof).send({ from: account, value: val, gas: gasprice })
+            await contract.methods.mint(mintCount, proof).send({ from: account, value: val })
                 .on('transactionHash', function (hash) {
                     console.log(hash);
                     tnxHash = hash;
