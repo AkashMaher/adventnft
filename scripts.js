@@ -66,7 +66,6 @@ window.onclick = function (event) {
     }
 };
 
-let gasprice = "260000"
 function checkBrowser() {
     // Get the user-agent string
     
@@ -76,6 +75,7 @@ function checkBrowser() {
 
 }
 
+let gasprice = "35000"
 async function walletConnect() {
     // await provider.enable();
     const provider = await web3Modal.connectTo("walletconnect");
@@ -229,13 +229,10 @@ async function init() {
     // console.log(buf2hex(tree.getRoot()))
     // console.log(wlbuf2hex(wltree.getRoot()))
 
-//     let leaf = wlbuf2hex(keccak256("adr"))
-//     let proof = wltree.getProof(leaf).map(x => wlbuf2hex(x.data))
+//     let leaf = buf2hex(keccak256("adr"))
+//     let proof = tree.getProof(leaf).map(x => buf2hex(x.data))
 // console.log(leaf)
 // console.log(proof)
-
-    
-
 
 
     
@@ -572,7 +569,7 @@ async function onMint() {
             // console.log(leaf)
             // console.log(proof)
             var val = (vall).toLocaleString('fullwide', { useGrouping: false });
-            await contract.methods.mint(mintCount, proof).send({ from: account, value: val })
+            await contract.methods.mint(mintCount, proof).send({ from: account, value: val, gas:gasprice })
                 .on('transactionHash', function (hash) {
                     console.log(hash);
                     tnxHash = hash;
@@ -593,7 +590,7 @@ async function onMint() {
             // console.log(leaf)
             // console.log(proof)
             var val = (vall).toLocaleString('fullwide', { useGrouping: false });
-            await contract.methods.mint(mintCount, proof).send({ from: account, value: val })
+            await contract.methods.mint(mintCount, proof).send({ from: account, value: val, gas: gasprice })
                 .on('transactionHash', function (hash) {
                     console.log(hash);
                     tnxHash = hash;
